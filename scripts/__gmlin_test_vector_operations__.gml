@@ -179,4 +179,25 @@
   assert_is(test_rn_subtractto_result, test_rn_subtractto_v2, "rn_subtract_to() didn't return vout if it is v2!");
   assert_equal(test_rn_subtractto_v2, rn(7, -1, 17, -5, 27, -7), "rn_subtract_to() failed if vout is v2!");
   test_rn_subtractto_v2 = rn(-4, 6, -10, 14, -16, 20);
+  
+  
+  //r2_dot(v1, v2)
+  var test_r2_dot_v1 = r2(9, -2);
+      test_r2_dot_v2 = r2(1, 7);
+  assert_equal(r2_dot(test_r2_dot_v1, test_r2_dot_v2), -5, "r2_dot() failed!");
+  //r3_dot(v1, v2)
+  var test_r3_dot_v1 = r3(4, -2, 5);
+      test_r3_dot_v2 = r3(1, 2, 3);
+  assert_equal(r3_dot(test_r3_dot_v1, test_r3_dot_v2), 15, "r3_dot() failed!");
+  //r4_dot(v1, v2)
+  var test_r4_dot_v1 = r4(17, 2, 2, 7);
+      test_r4_dot_v2 = r4(1, -3, -2, -2);
+  assert_equal(r4_dot(test_r4_dot_v1, test_r4_dot_v2), -7, "r4_dot() failed!");
+  //rn_dot(v1, v2)
+  assert_equal(rn_dot(test_r2_dot_v1, test_r2_dot_v2), -5, "rn_dot() isn't compatible with 2D vector!");
+  assert_equal(rn_dot(test_r3_dot_v1, test_r3_dot_v2), 15, "rn_dot() isn't compatible with 3D vector!");
+  assert_equal(rn_dot(test_r4_dot_v1, test_r4_dot_v2), -7, "rn_dot() isn't compatible with 4D vector!");
+  var test_rn_dot_v1 = rn(9, -2, 4, -2, 5, 17, 2, 2, 7);
+      test_rn_dot_v2 = rn(1, 7, 1, 2, 3, 1, -3, -2, -2);
+  assert_equal(rn_dot(test_rn_dot_v1, test_rn_dot_v2), 3, "rn_dot() failed!");
 }
