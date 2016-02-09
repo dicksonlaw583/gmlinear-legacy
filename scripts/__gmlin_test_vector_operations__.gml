@@ -118,4 +118,65 @@
   var test_rn_subtract_v1 = rn(2, 4, 6, 8, 10, 12, 14),
       test_rn_subtract_v2 = rn(100, 99, 98, 97, 96, 95, 94);
   assert_equal(rn_subtract(test_rn_subtract_v1, test_rn_subtract_v2), rn(-98, -95, -92, -89, -86, -83, -80), "rn_subtract() failed!");
+  
+  //r2_subtract_to(v1, v2, vout)
+  var test_r2_subtractto_v1 = r2(3, 5),
+      test_r2_subtractto_v2 = r2(-4, 6),
+      test_r2_subtractto_vout = r2_zero(),
+      test_r2_subtractto_result = r2_subtract_to(test_r2_subtractto_v1, test_r2_subtractto_v2, test_r2_subtractto_vout);
+  assert_is(test_r2_subtractto_result, test_r2_subtractto_vout, "r2_subtract_to() didn't return vout!");
+  assert_equal(test_r2_subtractto_result, r2(7, -1), "r2_subtract_to() failed!");
+  test_r2_subtractto_result = r2_subtract_to(test_r2_subtractto_v1, test_r2_subtractto_v2, test_r2_subtractto_v1);
+  assert_is(test_r2_subtractto_result, test_r2_subtractto_v1, "r2_subtract_to() didn't return vout if it is v1!");
+  assert_equal(test_r2_subtractto_v1, r2(7, -1), "r2_subtract_to() failed if vout is v1!");
+  test_r2_subtractto_v1 = r2(3, 5);
+  test_r2_subtractto_result = r2_subtract_to(test_r2_subtractto_v1, test_r2_subtractto_v2, test_r2_subtractto_v2);
+  assert_is(test_r2_subtractto_result, test_r2_subtractto_v2, "r2_subtract_to() didn't return vout if it is v2!");
+  assert_equal(test_r2_subtractto_v2, r2(7, -1), "r2_subtract_to() failed if vout is v2!");
+  test_r2_subtractto_v2 = r2(-4, 6);
+  //r3_subtract_to(v1, v2, vout)
+  var test_r3_subtractto_v1 = r3(3, 5, 7),
+      test_r3_subtractto_v2 = r3(-4, 6, -10),
+      test_r3_subtractto_vout = r3_zero(),
+      test_r3_subtractto_result = r3_subtract_to(test_r3_subtractto_v1, test_r3_subtractto_v2, test_r3_subtractto_vout);
+  assert_is(test_r3_subtractto_result, test_r3_subtractto_vout, "r3_subtract_to() didn't return vout!");
+  assert_equal(test_r3_subtractto_result, r3(7, -1, 17), "r3_subtract_to() failed!");
+  test_r3_subtractto_result = r3_subtract_to(test_r3_subtractto_v1, test_r3_subtractto_v2, test_r3_subtractto_v1);
+  assert_is(test_r3_subtractto_result, test_r3_subtractto_v1, "r3_subtract_to() didn't return vout if it is v1!");
+  assert_equal(test_r3_subtractto_v1, r3(7, -1, 17), "r3_subtract_to() failed if vout is v1!");
+  test_r3_subtractto_v1 = r3(3, 5, 7);
+  test_r3_subtractto_result = r3_subtract_to(test_r3_subtractto_v1, test_r3_subtractto_v2, test_r3_subtractto_v2);
+  assert_is(test_r3_subtractto_result, test_r3_subtractto_v2, "r3_subtract_to() didn't return vout if it is v2!");
+  assert_equal(test_r3_subtractto_v2, r3(7, -1, 17), "r3_subtract_to() failed if vout is v2!");
+  test_r3_subtractto_v2 = r3(-4, 6, -10);
+  //r4_subtract_to(v1, v2, vout)
+  var test_r4_subtractto_v1 = r4(3, 5, 7, 9),
+      test_r4_subtractto_v2 = r4(-4, 6, -10, 14),
+      test_r4_subtractto_vout = r4_zero(),
+      test_r4_subtractto_result = r4_subtract_to(test_r4_subtractto_v1, test_r4_subtractto_v2, test_r4_subtractto_vout);
+  assert_is(test_r4_subtractto_result, test_r4_subtractto_vout, "r4_subtract_to() didn't return vout!");
+  assert_equal(test_r4_subtractto_result, r4(7, -1, 17, -5), "r4_subtract_to() failed!");
+  test_r4_subtractto_result = r4_subtract_to(test_r4_subtractto_v1, test_r4_subtractto_v2, test_r4_subtractto_v1);
+  assert_is(test_r4_subtractto_result, test_r4_subtractto_v1, "r4_subtract_to() didn't return vout if it is v1!");
+  assert_equal(test_r4_subtractto_v1, r4(7, -1, 17, -5), "r4_subtract_to() failed if vout is v1!");
+  test_r4_subtractto_v1 = r4(3, 5, 7, 9);
+  test_r4_subtractto_result = r4_subtract_to(test_r4_subtractto_v1, test_r4_subtractto_v2, test_r4_subtractto_v2);
+  assert_is(test_r4_subtractto_result, test_r4_subtractto_v2, "r4_subtract_to() didn't return vout if it is v2!");
+  assert_equal(test_r4_subtractto_v2, r4(7, -1, 17, -5), "r4_subtract_to() failed if vout is v2!");
+  test_r4_subtractto_v2 = r4(-4, 6, -10, 14);
+  //rn_subtract_to(v1, v2, vout)
+  var test_rn_subtractto_v1 = rn(3, 5, 7, 9, 11, 13),
+      test_rn_subtractto_v2 = rn(-4, 6, -10, 14, -16, 20),
+      test_rn_subtractto_vout = rn_zero(6),
+      test_rn_subtractto_result = rn_subtract_to(test_rn_subtractto_v1, test_rn_subtractto_v2, test_rn_subtractto_vout);
+  assert_is(test_rn_subtractto_result, test_rn_subtractto_vout, "rn_subtract_to() didn't return vout!");
+  assert_equal(test_rn_subtractto_result, rn(7, -1, 17, -5, 27, -7), "rn_subtract_to() failed!");
+  test_rn_subtractto_result = rn_subtract_to(test_rn_subtractto_v1, test_rn_subtractto_v2, test_rn_subtractto_v1);
+  assert_is(test_rn_subtractto_result, test_rn_subtractto_v1, "rn_subtract_to() didn't return vout if it is v1!");
+  assert_equal(test_rn_subtractto_v1, rn(7, -1, 17, -5, 27, -7), "rn_subtract_to() failed if vout is v1!");
+  test_rn_subtractto_v1 = rn(3, 5, 7, 9, 11, 13);
+  test_rn_subtractto_result = rn_subtract_to(test_rn_subtractto_v1, test_rn_subtractto_v2, test_rn_subtractto_v2);
+  assert_is(test_rn_subtractto_result, test_rn_subtractto_v2, "rn_subtract_to() didn't return vout if it is v2!");
+  assert_equal(test_rn_subtractto_v2, rn(7, -1, 17, -5, 27, -7), "rn_subtract_to() failed if vout is v2!");
+  test_rn_subtractto_v2 = rn(-4, 6, -10, 14, -16, 20);
 }
