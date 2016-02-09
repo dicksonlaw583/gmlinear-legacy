@@ -97,4 +97,25 @@
   assert_is(test_rn_addto_result, test_rn_addto_v2, "rn_add_to() didn't return vout if it is v2!");
   assert_equal(test_rn_addto_v2, rn(-1, 11, -3, 23, -5, 33), "rn_add_to() failed if vout is v2!");
   test_rn_addto_v2 = rn(-4, 6, -10, 14, -16, 20);
+  
+  
+  //r2_subtract(v1, v2)
+  var test_r2_subtract_v1 = r2(7, 2),
+      test_r2_subtract_v2 = r2(5, 9);
+  assert_equal(r2_subtract(test_r2_subtract_v1, test_r2_subtract_v2), r2(2, -7), "r2_subtract() failed!");
+  //r3_subtract(v1, v2)
+  var test_r3_subtract_v1 = r3(27, 15, 30),
+      test_r3_subtract_v2 = r3(12, 33, 21);
+  assert_equal(r3_subtract(test_r3_subtract_v1, test_r3_subtract_v2), r3(15, -18, 9), "r3_subtract() failed!");
+  //r4_subtract(v1, v2)
+  var test_r4_subtract_v1 = r4(1, 2, 3, 4),
+      test_r4_subtract_v2 = r4(9, 18, 27, 36);
+  assert_equal(r4_subtract(test_r4_subtract_v1, test_r4_subtract_v2), r4(-8, -16, -24, -32), "r4_subtract() failed!");
+  //rn_subtract(v1, v2)
+  assert_equal(rn_subtract(test_r2_subtract_v1, test_r2_subtract_v2), r2(2, -7), "rn_subtract() isn't compatible with 2D vectors!");
+  assert_equal(rn_subtract(test_r3_subtract_v1, test_r3_subtract_v2), r3(15, -18, 9), "rn_subtract() isn't compatible with 3D vectors!");
+  assert_equal(rn_subtract(test_r4_subtract_v1, test_r4_subtract_v2), r4(-8, -16, -24, -32), "rn_subtract() isn't compatible with 4D vectors!");
+  var test_rn_subtract_v1 = rn(2, 4, 6, 8, 10, 12, 14),
+      test_rn_subtract_v2 = rn(100, 99, 98, 97, 96, 95, 94);
+  assert_equal(rn_subtract(test_rn_subtract_v1, test_rn_subtract_v2), rn(-98, -95, -92, -89, -86, -83, -80), "rn_subtract() failed!");
 }
