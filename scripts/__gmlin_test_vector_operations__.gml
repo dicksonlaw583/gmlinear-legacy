@@ -206,4 +206,20 @@
   var test_r3_cross_v1 = r3(7, -3, 6),
       test_r3_cross_v2 = r3(-2, 6, 4);
   assert_equal(r3_cross(test_r3_cross_v1, test_r3_cross_v2), r3(-48, -40, 36), "r3_cross() failed!");
+  
+  //r3_cross_to(v1, v2, vout)
+  var test_r3_crossto_v1 = r3(7, -3, 6),
+      test_r3_crossto_v2 = r3(-2, 6, 4),
+      test_r3_crossto_vout = r3_zero(),
+      test_r3_crossto_result = r3_cross_to(test_r3_crossto_v1, test_r3_crossto_v2, test_r3_crossto_vout);
+  assert_is(test_r3_crossto_result, test_r3_crossto_vout, "r3_cross_to() didn't return vout!");
+  assert_equal(test_r3_crossto_result, r3(-48, -40, 36), "r3_cross_to() failed!");
+  test_r3_crossto_result = r3_cross_to(test_r3_crossto_v1, test_r3_crossto_v2, test_r3_crossto_v1);
+  assert_is(test_r3_crossto_result, test_r3_crossto_v1, "r3_cross_to() didn't return vout if it is v1!");
+  assert_equal(test_r3_crossto_v1, r3(-48, -40, 36), "r3_cross_to() failed if vout is v1!");
+  test_r3_crossto_v1 = r3(7, -3, 6);
+  test_r3_crossto_result = r3_cross_to(test_r3_crossto_v1, test_r3_crossto_v2, test_r3_crossto_v2);
+  assert_is(test_r3_crossto_result, test_r3_crossto_v2, "r3_cross_to() didn't return vout if it is v2!");
+  assert_equal(test_r3_crossto_v2, r3(-48, -40, 36), "r3_cross_to() failed if vout is v2!");
+  test_r3_crossto_v2 = r3(-2, 6, 4);
 }

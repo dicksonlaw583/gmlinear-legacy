@@ -65,6 +65,7 @@
           <script>scripts\r3_subtract_to.gml</script>
           <script>scripts\r3_dot.gml</script>
           <script>scripts\r3_cross.gml</script>
+          <script>scripts\r3_cross_to.gml</script>
         </scripts>
         <scripts name="r4">
           <script>scripts\r4_clone.gml</script>
