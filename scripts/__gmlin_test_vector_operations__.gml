@@ -200,4 +200,10 @@
   var test_rn_dot_v1 = rn(9, -2, 4, -2, 5, 17, 2, 2, 7);
       test_rn_dot_v2 = rn(1, 7, 1, 2, 3, 1, -3, -2, -2);
   assert_equal(rn_dot(test_rn_dot_v1, test_rn_dot_v2), 3, "rn_dot() failed!");
+  
+  
+  //r3_cross(v1, v2)
+  var test_r3_cross_v1 = r3(7, -3, 6),
+      test_r3_cross_v2 = r3(-2, 6, 4);
+  assert_equal(r3_cross(test_r3_cross_v1, test_r3_cross_v2), r3(-48, -40, 36), "r3_cross() failed!");
 }
