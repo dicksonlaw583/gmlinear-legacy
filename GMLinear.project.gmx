@@ -61,6 +61,7 @@
           <script>scripts\r2_norm.gml</script>
           <script>scripts\r2_1norm.gml</script>
           <script>scripts\r2_maxnorm.gml</script>
+          <script>scripts\r2_lerp.gml</script>
         </scripts>
         <scripts name="r3">
           <script>scripts\r3_clone.gml</script>
@@ -76,6 +77,7 @@
           <script>scripts\r3_norm.gml</script>
           <script>scripts\r3_1norm.gml</script>
           <script>scripts\r3_maxnorm.gml</script>
+          <script>scripts\r3_lerp.gml</script>
         </scripts>
         <scripts name="r4">
           <script>scripts\r4_clone.gml</script>
@@ -89,6 +91,7 @@
           <script>scripts\r4_norm.gml</script>
           <script>scripts\r4_1norm.gml</script>
           <script>scripts\r4_maxnorm.gml</script>
+          <script>scripts\r4_lerp.gml</script>
         </scripts>
         <scripts name="rn">
           <script>scripts\rn_clone.gml</script>
@@ -102,6 +105,7 @@
           <script>scripts\rn_norm.gml</script>
           <script>scripts\rn_1norm.gml</script>
           <script>scripts\rn_maxnorm.gml</script>
+          <script>scripts\rn_lerp.gml</script>
         </scripts>
       </scripts>
       <scripts name="Matrix Operations">

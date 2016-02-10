@@ -301,4 +301,39 @@
   assert_equalish(rn_maxnorm(r3(2, -10, 11)), 11, "rn_maxnorm() at 3D failed!");
   assert_equalish(rn_maxnorm(r4(1, -2, 8, -10)), 10, "rn_maxnorm() at 4D failed!");
   assert_equalish(rn_maxnorm(rn(8, -9, 7, -1, -4, 3, 2, 1)), 9, "rn_maxnorm() at 8D failed!");
+  
+  
+  //r2_lerp(v1, v2, amount)
+  var test_r2_lerp_v1 = r2(3, -5),
+      test_r2_lerp_v2 = r2(-3, 7);
+  assert_equal(r2_lerp(test_r2_lerp_v1, test_r2_lerp_v2, 0), test_r2_lerp_v1, "r2_lerp() at 0 failed!");
+  assert_equal(r2_lerp(test_r2_lerp_v1, test_r2_lerp_v2, 1), test_r2_lerp_v2, "r2_lerp() at 1 failed!");
+  assert_equalish(r2_lerp(test_r2_lerp_v1, test_r2_lerp_v2, 1/2), r2(0, 1), "r2_lerp() at 1/2 failed!");
+  //r3_lerp(v1, v2, amount)
+  var test_r3_lerp_v1 = r3(0, 17, -3),
+      test_r3_lerp_v2 = r3(6, -1, 3);
+  assert_equal(r3_lerp(test_r3_lerp_v1, test_r3_lerp_v2, 0), test_r3_lerp_v1, "r3_lerp() at 0 failed!");
+  assert_equal(r3_lerp(test_r3_lerp_v1, test_r3_lerp_v2, 1), test_r3_lerp_v2, "r3_lerp() at 1 failed!");
+  assert_equalish(r3_lerp(test_r3_lerp_v1, test_r3_lerp_v2, 1/3), r3(2, 11, -1), "r3_lerp() at 1/3 failed!");
+  //r4_lerp(v1, v2, amount)
+  var test_r4_lerp_v1 = r4(0, 7, -3, 7),
+      test_r4_lerp_v2 = r4(8, -1, 17, 15);
+  assert_equal(r4_lerp(test_r4_lerp_v1, test_r4_lerp_v2, 0), test_r4_lerp_v1, "r4_lerp() at 0 failed!");
+  assert_equal(r4_lerp(test_r4_lerp_v1, test_r4_lerp_v2, 1), test_r4_lerp_v2, "r4_lerp() at 1 failed!");
+  assert_equalish(r4_lerp(test_r4_lerp_v1, test_r4_lerp_v2, 1/4), r4(2, 5, 2, 9), "r4_lerp() at 1/4 failed!");
+  //rn_lerp(v1, v2, amount)
+  assert_equal(rn_lerp(test_r2_lerp_v1, test_r2_lerp_v2, 0), test_r2_lerp_v1, "rn_lerp() 2D at 0 failed!");
+  assert_equal(rn_lerp(test_r2_lerp_v1, test_r2_lerp_v2, 1), test_r2_lerp_v2, "rn_lerp() 2D at 1 failed!");
+  assert_equalish(rn_lerp(test_r2_lerp_v1, test_r2_lerp_v2, 1/2), rn(0, 1), "rn_lerp() 2D at 1/2 failed!");
+  assert_equal(rn_lerp(test_r3_lerp_v1, test_r3_lerp_v2, 0), test_r3_lerp_v1, "rn_lerp() 3D at 0 failed!");
+  assert_equal(rn_lerp(test_r3_lerp_v1, test_r3_lerp_v2, 1), test_r3_lerp_v2, "rn_lerp() 3D at 1 failed!");
+  assert_equalish(rn_lerp(test_r3_lerp_v1, test_r3_lerp_v2, 1/3), rn(2, 11, -1), "rn_lerp() 3D at 1/3 failed!");
+  assert_equal(rn_lerp(test_r4_lerp_v1, test_r4_lerp_v2, 0), test_r4_lerp_v1, "rn_lerp() 4D at 0 failed!");
+  assert_equal(rn_lerp(test_r4_lerp_v1, test_r4_lerp_v2, 1), test_r4_lerp_v2, "rn_lerp() 4D at 1 failed!");
+  assert_equalish(rn_lerp(test_r4_lerp_v1, test_r4_lerp_v2, 1/4), rn(2, 5, 2, 9), "rn_lerp() 4D at 1/4 failed!");
+  var test_rn_lerp_v1 = rn(0, 7, -3, 7, -27, 0),
+      test_rn_lerp_v2 = rn(8, -1, 17, 15, -11, 0);
+  assert_equal(rn_lerp(test_rn_lerp_v1, test_rn_lerp_v2, 0), test_rn_lerp_v1, "rn_lerp() at 0 failed!");
+  assert_equal(rn_lerp(test_rn_lerp_v1, test_rn_lerp_v2, 1), test_rn_lerp_v2, "rn_lerp() at 1 failed!");
+  assert_equalish(rn_lerp(test_rn_lerp_v1, test_rn_lerp_v2, 3/4), rn(6, 1, 12, 13, -15, 0), "rn_lerp() at 3/4 failed!");
 }
