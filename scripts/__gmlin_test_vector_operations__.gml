@@ -239,4 +239,41 @@
   assert_equal(rn_scale(test_r4_scale_v, 9), r4(27, 54, 81, 108), "rn_scale() not compatible with 4D vector!");
   var test_rn_scale_v = rn(0, 5, 10, 15, 20, 25);
   assert_equal(rn_scale(test_rn_scale_v, 11), rn(0, 55, 110, 165, 220, 275), "rn_scale() failed!");
+  
+  //r2_scale_to(v, r, vout)
+  var test_r2_scaleto_v = r2(1, 3),
+      test_r2_scaleto_vout = r2_zero();
+  assert_is(r2_scale_to(test_r2_scaleto_v, 5, test_r2_scaleto_vout), test_r2_scaleto_vout, "r2_scale_to() didn't return vout!");
+  assert_equal(test_r2_scaleto_vout, r2(5, 15), "r2_scale_to() failed!");
+  assert_is(r2_scale_to(test_r2_scaleto_v, 5, test_r2_scaleto_v), test_r2_scaleto_v, "r2_scale_to() didn't return vout if it is v!");
+  assert_equal(test_r2_scaleto_v, r2(5, 15), "r2_scale_to() failed when vout is v!");
+  test_r2_scaleto_v = r2(1, 3);
+  test_r2_scaleto_vout = r2_zero();
+  //r3_scale_to(v, r, vout)
+  var test_r3_scaleto_v = r3(2, 4, 6),
+      test_r3_scaleto_vout = r3_zero();
+  assert_is(r3_scale_to(test_r3_scaleto_v, 7, test_r3_scaleto_vout), test_r3_scaleto_vout, "r3_scale_to() didn't return vout!");
+  assert_equal(test_r3_scaleto_vout, r3(14, 28, 42), "r3_scale_to() failed!");
+  assert_is(r3_scale_to(test_r3_scaleto_v, 7, test_r3_scaleto_v), test_r3_scaleto_v, "r3_scale_to() didn't return vout if it is v!");
+  assert_equal(test_r3_scaleto_v, r3(14, 28, 42), "r3_scale_to() failed when vout is v!");
+  test_r3_scaleto_v = r3(2, 4, 6);
+  test_r3_scaleto_vout = r3_zero();
+  //r4_scale_to(v, r, vout)
+  var test_r4_scaleto_v = r4(3, 6, 9, 12),
+      test_r4_scaleto_vout = r4_zero();
+  assert_is(r4_scale_to(test_r4_scaleto_v, 9, test_r4_scaleto_vout), test_r4_scaleto_vout, "r4_scale_to() didn't return vout!");
+  assert_equal(test_r4_scaleto_vout, r4(27, 54, 81, 108), "r4_scale_to() failed!");
+  assert_is(r4_scale_to(test_r4_scaleto_v, 9, test_r4_scaleto_v), test_r4_scaleto_v, "r4_scale_to() didn't return vout if it is v!");
+  assert_equal(test_r4_scaleto_v, r4(27, 54, 81, 108), "r4_scale_to() failed when vout is v!");
+  test_r4_scaleto_v = r4(3, 6, 9, 12);
+  test_r4_scaleto_vout = r4_zero();
+  //rn_scale_to(v, r, vout)
+  var test_rn_scaleto_v = rn(0, 5, 10, 15, 20, 25),
+      test_rn_scaleto_vout = rn_zero(6);
+  assert_is(rn_scale_to(test_rn_scaleto_v, 11, test_rn_scaleto_vout), test_rn_scaleto_vout, "rn_scale_to() didn't return vout!");
+  assert_equal(test_rn_scaleto_vout, rn(0, 55, 110, 165, 220, 275), "rn_scale_to() failed!");
+  assert_is(rn_scale_to(test_rn_scaleto_v, 11, test_rn_scaleto_v), test_rn_scaleto_v, "rn_scale_to() didn't return vout if it is v!");
+  assert_equal(test_rn_scaleto_v, rn(0, 55, 110, 165, 220, 275), "rn_scale_to() failed when vout is v!");
+  test_rn_scaleto_v = rn(0, 5, 10, 15, 20, 25);
+  test_rn_scaleto_vout = rn_zero(6);
 }
