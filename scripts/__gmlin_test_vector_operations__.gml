@@ -276,4 +276,17 @@
   assert_equal(test_rn_scaleto_v, rn(0, 55, 110, 165, 220, 275), "rn_scale_to() failed when vout is v!");
   test_rn_scaleto_v = rn(0, 5, 10, 15, 20, 25);
   test_rn_scaleto_vout = rn_zero(6);
+  
+  
+  //r2_norm(v)
+  assert_equalish(r2_norm(r2(3, -4)), 5, "r2_norm() failed!");
+  //r3_norm(v)
+  assert_equalish(r3_norm(r3(2, -10, 11)), 15, "r3_norm() failed!");
+  //r4_norm(v)
+  assert_equalish(r4_norm(r4(1, -2, 8, -10)), 13, "r4_norm() failed!");
+  //rn_norm(v)
+  assert_equalish(rn_norm(r2(3, -4)), 5, "rn_norm() at 2D failed!");
+  assert_equalish(rn_norm(r3(2, -10, 11)), 15, "rn_norm() at 3D failed!");
+  assert_equalish(rn_norm(r4(1, -2, 8, -10)), 13, "rn_norm() at 4D failed!");
+  assert_equalish(rn_norm(rn(8, -9, 7, -1, -4, 3, 2, 1)), 15, "rn_norm() at 8D failed!");
 }
