@@ -289,4 +289,16 @@
   assert_equalish(rn_norm(r3(2, -10, 11)), 15, "rn_norm() at 3D failed!");
   assert_equalish(rn_norm(r4(1, -2, 8, -10)), 13, "rn_norm() at 4D failed!");
   assert_equalish(rn_norm(rn(8, -9, 7, -1, -4, 3, 2, 1)), 15, "rn_norm() at 8D failed!");
+  
+  //r2_1norm(v)
+  assert_equalish(r2_1norm(r2(3, -4)), 7, "r2_1norm() failed!");
+  //r3_1norm(v)
+  assert_equalish(r3_1norm(r3(2, -10, 11)), 23, "r3_1norm() failed!");
+  //r4_1norm(v)
+  assert_equalish(r4_1norm(r4(1, -2, 8, -10)), 21, "r4_1norm() failed!");
+  //rn_1norm(v)
+  assert_equalish(rn_1norm(r2(3, -4)), 7, "rn_1norm() at 2D failed!");
+  assert_equalish(rn_1norm(r3(2, -10, 11)), 23, "rn_1norm() at 3D failed!");
+  assert_equalish(rn_1norm(r4(1, -2, 8, -10)), 21, "rn_1norm() at 4D failed!");
+  assert_equalish(rn_1norm(rn(8, -9, 7, -1, -4, 3, 2, 1)), 35, "rn_1norm() at 8D failed!");
 }
