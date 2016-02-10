@@ -56,6 +56,7 @@
           <script>scripts\r2_subtract.gml</script>
           <script>scripts\r2_subtract_to.gml</script>
           <script>scripts\r2_dot.gml</script>
+          <script>scripts\r2_scale.gml</script>
         </scripts>
         <scripts name="r3">
           <script>scripts\r3_clone.gml</script>
@@ -66,6 +67,7 @@
           <script>scripts\r3_dot.gml</script>
           <script>scripts\r3_cross.gml</script>
           <script>scripts\r3_cross_to.gml</script>
+          <script>scripts\r3_scale.gml</script>
         </scripts>
         <scripts name="r4">
           <script>scripts\r4_clone.gml</script>
@@ -74,6 +76,7 @@
           <script>scripts\r4_subtract.gml</script>
           <script>scripts\r4_subtract_to.gml</script>
           <script>scripts\r4_dot.gml</script>
+          <script>scripts\r4_scale.gml</script>
         </scripts>
         <scripts name="rn">
           <script>scripts\rn_clone.gml</script>
@@ -82,6 +85,7 @@
           <script>scripts\rn_subtract.gml</script>
           <script>scripts\rn_subtract_to.gml</script>
           <script>scripts\rn_dot.gml</script>
+          <script>scripts\rn_scale.gml</script>
         </scripts>
       </scripts>
       <scripts name="Matrix Operations">

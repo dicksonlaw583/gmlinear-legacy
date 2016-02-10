@@ -222,4 +222,21 @@
   assert_is(test_r3_crossto_result, test_r3_crossto_v2, "r3_cross_to() didn't return vout if it is v2!");
   assert_equal(test_r3_crossto_v2, r3(-48, -40, 36), "r3_cross_to() failed if vout is v2!");
   test_r3_crossto_v2 = r3(-2, 6, 4);
+  
+  
+  //r2_scale(v, r)
+  var test_r2_scale_v = r2(1, 3);
+  assert_equal(r2_scale(test_r2_scale_v, 5), r2(5, 15), "r2_scale() failed!");
+  //r3_scale(v, r)
+  var test_r3_scale_v = r3(2, 4, 6);
+  assert_equal(r3_scale(test_r3_scale_v, 7), r3(14, 28, 42), "r3_scale() failed!");
+  //r4_scale(v, r)
+  var test_r4_scale_v = r4(3, 6, 9, 12);
+  assert_equal(r4_scale(test_r4_scale_v, 9), r4(27, 54, 81, 108), "r4_scale() failed!");
+  //rn_scale(v, r)
+  assert_equal(rn_scale(test_r2_scale_v, 5), r2(5, 15), "rn_scale() not compatible with 2D vector!");
+  assert_equal(rn_scale(test_r3_scale_v, 7), r3(14, 28, 42), "rn_scale() not compatible with 3D vector!");
+  assert_equal(rn_scale(test_r4_scale_v, 9), r4(27, 54, 81, 108), "rn_scale() not compatible with 4D vector!");
+  var test_rn_scale_v = rn(0, 5, 10, 15, 20, 25);
+  assert_equal(rn_scale(test_rn_scale_v, 11), rn(0, 55, 110, 165, 220, 275), "rn_scale() failed!");
 }
