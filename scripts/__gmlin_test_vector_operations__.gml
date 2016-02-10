@@ -336,4 +336,121 @@
   assert_equal(rn_lerp(test_rn_lerp_v1, test_rn_lerp_v2, 0), test_rn_lerp_v1, "rn_lerp() at 0 failed!");
   assert_equal(rn_lerp(test_rn_lerp_v1, test_rn_lerp_v2, 1), test_rn_lerp_v2, "rn_lerp() at 1 failed!");
   assert_equalish(rn_lerp(test_rn_lerp_v1, test_rn_lerp_v2, 3/4), rn(6, 1, 12, 13, -15, 0), "rn_lerp() at 3/4 failed!");
+  
+  //r2_lerp_to(v1, v2, amount, vout)
+  var test_r2_lerpto_v1 = r2(3, -5),
+      test_r2_lerpto_v2 = r2(-3, 7),
+      test_r2_lerpto_vout = r2_zero();
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 0, test_r2_lerpto_vout), test_r2_lerpto_vout, "r2_lerp_to() at 0 returned the wrong vector!");
+  assert_equal(test_r2_lerpto_vout, test_r2_lerpto_v1, "r2_lerp_to() at 0 failed!");
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 1, test_r2_lerpto_vout), test_r2_lerpto_vout, "r2_lerp_to() at 1 returned the wrong vector!");
+  assert_equal(test_r2_lerpto_vout, test_r2_lerpto_v2, "r2_lerp_to() at 1 failed!");
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 1/2, test_r2_lerpto_vout), test_r2_lerpto_vout, "r2_lerp_to() at 1/2 returned the wrong vector!");
+  assert_equalish(test_r2_lerpto_vout, r2(0, 1), "r2_lerp_to() at 1/2 failed!");
+  test_r2_lerpto_vout = r2_zero();
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 0, test_r2_lerpto_v1), test_r2_lerpto_v1, "r2_lerp_to() at 0 returned the wrong vector when vout is v1!");
+  assert_equal(test_r2_lerpto_v1, test_r2_lerpto_v1, "r2_lerp_to() at 0 failed when vout is v1!");
+  test_r2_lerpto_v1 = r2(3, -5);
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 1, test_r2_lerpto_v1), test_r2_lerpto_v1, "r2_lerp_to() at 1 returned the wrong vector when vout is v1!");
+  assert_equal(test_r2_lerpto_v1, test_r2_lerpto_v2, "r2_lerp_to() at 1 failed when vout is v1!");
+  test_r2_lerpto_v1 = r2(3, -5);
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 1/2, test_r2_lerpto_v1), test_r2_lerpto_v1, "r2_lerp_to() at 1/2 returned the wrong vector when vout is v1!");
+  assert_equalish(test_r2_lerpto_v1, r2(0, 1), "r2_lerp_to() at 1/2 failed when vout is v1!");
+  test_r2_lerpto_v1 = r2(3, -5);
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 0, test_r2_lerpto_v2), test_r2_lerpto_v2, "r2_lerp_to() at 0 returned the wrong vector when vout is v2!");
+  assert_equal(test_r2_lerpto_v2, test_r2_lerpto_v1, "r2_lerp_to() at 0 failed when vout is v2!");
+  test_r2_lerpto_v2 = r2(-3, 7);
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 1, test_r2_lerpto_v2), test_r2_lerpto_v2, "r2_lerp_to() at 1 returned the wrong vector when vout is v2!");
+  assert_equal(test_r2_lerpto_v2, test_r2_lerpto_v2, "r2_lerp_to() at 1 failed when vout is v2!");
+  test_r2_lerpto_v2 = r2(-3, 7);
+  assert_is(r2_lerp_to(test_r2_lerpto_v1, test_r2_lerpto_v2, 1/2, test_r2_lerpto_v2), test_r2_lerpto_v2, "r2_lerp_to() at 1/2 returned the wrong vector when vout is v2!");
+  assert_equalish(test_r2_lerpto_v2, r2(0, 1), "r2_lerp_to() at 1/2 failed when vout is v2!");
+  test_r2_lerpto_v2 = r2(-3, 7);
+  //r3_lerp_to(v1, v2, amount, vout)
+  var test_r3_lerpto_v1 = r3(0, 17, -3),
+      test_r3_lerpto_v2 = r3(6, -1, 3),
+      test_r3_lerpto_vout = r3_zero();
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 0, test_r3_lerpto_vout), test_r3_lerpto_vout, "r3_lerp_to() at 0 returned the wrong vector!");
+  assert_equal(test_r3_lerpto_vout, test_r3_lerpto_v1, "r3_lerp_to() at 0 failed!");
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 1, test_r3_lerpto_vout), test_r3_lerpto_vout, "r3_lerp_to() at 1 returned the wrong vector!");
+  assert_equal(test_r3_lerpto_vout, test_r3_lerpto_v2, "r3_lerp_to() at 1 failed!");
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 1/3, test_r3_lerpto_vout), test_r3_lerpto_vout, "r3_lerp_to() at 1/3 returned the wrong vector!");
+  assert_equalish(test_r3_lerpto_vout, r3(2, 11, -1), "r3_lerp_to() at 1/3 failed!");
+  test_r3_lerpto_vout = r3_zero();
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 0, test_r3_lerpto_v1), test_r3_lerpto_v1, "r3_lerp_to() at 0 returned the wrong vector when vout is v1!");
+  assert_equal(test_r3_lerpto_v1, test_r3_lerpto_v1, "r3_lerp_to() at 0 failed when vout is v1!");
+  test_r3_lerpto_v1 = r3(0, 17, -3);
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 1, test_r3_lerpto_v1), test_r3_lerpto_v1, "r3_lerp_to() at 1 returned the wrong vector when vout is v1!");
+  assert_equal(test_r3_lerpto_v1, test_r3_lerpto_v2, "r3_lerp_to() at 1 failed when vout is v1!");
+  test_r3_lerpto_v1 = r3(0, 17, -3);
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 1/3, test_r3_lerpto_v1), test_r3_lerpto_v1, "r3_lerp_to() at 1/3 returned the wrong vector when vout is v1!");
+  assert_equalish(test_r3_lerpto_v1, r3(2, 11, -1), "r3_lerp_to() at 1/3 failed when vout is v1!");
+  test_r3_lerpto_v1 = r3(0, 17, -3);
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 0, test_r3_lerpto_v2), test_r3_lerpto_v2, "r3_lerp_to() at 0 returned the wrong vector when vout is v2!");
+  assert_equal(test_r3_lerpto_v2, test_r3_lerpto_v1, "r3_lerp_to() at 0 failed when vout is v2!");
+  test_r3_lerpto_v2 = r3(6, -1, 3);
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 1, test_r3_lerpto_v2), test_r3_lerpto_v2, "r3_lerp_to() at 1 returned the wrong vector when vout is v2!");
+  assert_equal(test_r3_lerpto_v2, test_r3_lerpto_v2, "r3_lerp_to() at 1 failed when vout is v2!");
+  test_r3_lerpto_v2 = r3(6, -1, 3);
+  assert_is(r3_lerp_to(test_r3_lerpto_v1, test_r3_lerpto_v2, 1/3, test_r3_lerpto_v2), test_r3_lerpto_v2, "r3_lerp_to() at 1/3 returned the wrong vector when vout is v2!");
+  assert_equalish(test_r3_lerpto_v2, r3(2, 11, -1), "r3_lerp_to() at 1/3 failed when vout is v2!");
+  test_r3_lerpto_v2 = r3(6, -1, 3);
+  //r4_lerp_to(v1, v2, amount, vout)
+  var test_r4_lerpto_v1 = r4(0, 7, -3, 7),
+      test_r4_lerpto_v2 = r4(8, -1, 17, 15),
+      test_r4_lerpto_vout = r4_zero();
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 0, test_r4_lerpto_vout), test_r4_lerpto_vout, "r4_lerp_to() at 0 returned the wrong vector!");
+  assert_equal(test_r4_lerpto_vout, test_r4_lerpto_v1, "r4_lerp_to() at 0 failed!");
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 1, test_r4_lerpto_vout), test_r4_lerpto_vout, "r4_lerp_to() at 1 returned the wrong vector!");
+  assert_equal(test_r4_lerpto_vout, test_r4_lerpto_v2, "r4_lerp_to() at 1 failed!");
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 1/4, test_r4_lerpto_vout), test_r4_lerpto_vout, "r4_lerp_to() at 1/4 returned the wrong vector!");
+  assert_equalish(test_r4_lerpto_vout, r4(2, 5, 2, 9), "r4_lerp_to() at 1/4 failed!");
+  test_r4_lerpto_vout = r4_zero();
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 0, test_r4_lerpto_v1), test_r4_lerpto_v1, "r4_lerp_to() at 0 returned the wrong vector when vout is v1!");
+  assert_equal(test_r4_lerpto_v1, test_r4_lerpto_v1, "r4_lerp_to() at 0 failed when vout is v1!");
+  test_r4_lerpto_v1 = r4(0, 7, -3, 7);
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 1, test_r4_lerpto_v1), test_r4_lerpto_v1, "r4_lerp_to() at 1 returned the wrong vector when vout is v1!");
+  assert_equal(test_r4_lerpto_v1, test_r4_lerpto_v2, "r4_lerp_to() at 1 failed when vout is v1!");
+  test_r4_lerpto_v1 = r4(0, 7, -3, 7);
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 1/4, test_r4_lerpto_v1), test_r4_lerpto_v1, "r4_lerp_to() at 1/4 returned the wrong vector when vout is v1!");
+  assert_equalish(test_r4_lerpto_v1, r4(2, 5, 2, 9), "r4_lerp_to() at 1/4 failed when vout is v1!");
+  test_r4_lerpto_v1 = r4(0, 7, -3, 7);
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 0, test_r4_lerpto_v2), test_r4_lerpto_v2, "r4_lerp_to() at 0 returned the wrong vector when vout is v2!");
+  assert_equal(test_r4_lerpto_v2, test_r4_lerpto_v1, "r4_lerp_to() at 0 failed when vout is v2!");
+  test_r4_lerpto_v2 = r4(8, -1, 17, 15);
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 1, test_r4_lerpto_v2), test_r4_lerpto_v2, "r4_lerp_to() at 1 returned the wrong vector when vout is v2!");
+  assert_equal(test_r4_lerpto_v2, test_r4_lerpto_v2, "r4_lerp_to() at 1 failed when vout is v2!");
+  test_r4_lerpto_v2 = r4(8, -1, 17, 15);
+  assert_is(r4_lerp_to(test_r4_lerpto_v1, test_r4_lerpto_v2, 1/4, test_r4_lerpto_v2), test_r4_lerpto_v2, "r4_lerp_to() at 1/4 returned the wrong vector when vout is v2!");
+  assert_equalish(test_r4_lerpto_v2, r4(2, 5, 2, 9), "r4_lerp_to() at 1/4 failed when vout is v2!");
+  test_r4_lerpto_v2 = r4(8, -1, 17, 15);
+  //rn_lerp_to(v1, v2, amount, vout)
+  var test_rn_lerpto_v1 = rn(0, 7, -3, 7, -27, 0),
+      test_rn_lerpto_v2 = rn(8, -1, 17, 15, -11, 0),
+      test_rn_lerpto_vout = rn_zero(6);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 0, test_rn_lerpto_vout), test_rn_lerpto_vout, "rn_lerp_to() at 0 returned the wrong vector!");
+  assert_equal(test_rn_lerpto_vout, test_rn_lerpto_v1, "rn_lerp_to() at 0 failed!");
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 1, test_rn_lerpto_vout), test_rn_lerpto_vout, "rn_lerp_to() at 1 returned the wrong vector!");
+  assert_equal(test_rn_lerpto_vout, test_rn_lerpto_v2, "rn_lerp_to() at 1 failed!");
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 3/4, test_rn_lerpto_vout), test_rn_lerpto_vout, "rn_lerp_to() at 3/4 returned the wrong vector!");
+  assert_equalish(test_rn_lerpto_vout, rn(6, 1, 12, 13, -15, 0), "rn_lerp_to() at 3/4 failed!");
+  test_rn_lerpto_vout = rn_zero(6);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 0, test_rn_lerpto_v1), test_rn_lerpto_v1, "rn_lerp_to() at 0 returned the wrong vector when vout is v1!");
+  assert_equal(test_rn_lerpto_v1, test_rn_lerpto_v1, "rn_lerp_to() at 0 failed when vout is v1!");
+  test_rn_lerpto_v1 = rn(0, 7, -3, 7, -27, 0);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 1, test_rn_lerpto_v1), test_rn_lerpto_v1, "rn_lerp_to() at 1 returned the wrong vector when vout is v1!");
+  assert_equal(test_rn_lerpto_v1, test_rn_lerpto_v2, "rn_lerp_to() at 1 failed when vout is v1!");
+  test_rn_lerpto_v1 = rn(0, 7, -3, 7, -27, 0);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 3/4, test_rn_lerpto_v1), test_rn_lerpto_v1, "rn_lerp_to() at 3/4 returned the wrong vector when vout is v1!");
+  assert_equalish(test_rn_lerpto_v1, rn(6, 1, 12, 13, -15, 0), "rn_lerp_to() at 3/4 failed when vout is v1!");
+  test_rn_lerpto_v1 = rn(0, 7, -3, 7, -27, 0);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 0, test_rn_lerpto_v2), test_rn_lerpto_v2, "rn_lerp_to() at 0 returned the wrong vector when vout is v2!");
+  assert_equal(test_rn_lerpto_v2, test_rn_lerpto_v1, "rn_lerp_to() at 0 failed when vout is v2!");
+  test_rn_lerpto_v2 = rn(8, -1, 17, 15, -11, 0);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 1, test_rn_lerpto_v2), test_rn_lerpto_v2, "rn_lerp_to() at 1 returned the wrong vector when vout is v2!");
+  assert_equal(test_rn_lerpto_v2, test_rn_lerpto_v2, "rn_lerp_to() at 1 failed when vout is v2!");
+  test_rn_lerpto_v2 = rn(8, -1, 17, 15, -11, 0);
+  assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 3/4, test_rn_lerpto_v2), test_rn_lerpto_v2, "rn_lerp_to() at 3/4 returned the wrong vector when vout is v2!");
+  assert_equalish(test_rn_lerpto_v2, rn(6, 1, 12, 13, -15, 0), "rn_lerp_to() at 3/4 failed when vout is v2!");
+  test_rn_lerpto_v2 = rn(8, -1, 17, 15, -11, 0);
 }
