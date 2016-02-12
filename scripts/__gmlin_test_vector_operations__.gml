@@ -529,4 +529,16 @@
   assert_equal(rn_proj(rn(-7, 3, 9), rn(1, 2, -3)), rn(-2, -4, 6), "rn_proj() in 3D failed!");
   assert_equal(rn_proj(rn(-1, -3, 4, -20), rn(1, -2, 3, -5)), rn(3, -6, 9, -15), "rn_proj() in 4D failed!");
   assert_equal(rn_proj(rn(5, 4, 4, 5, 2), rn(-1, -2, -3, -4, -5)), rn(1, 2, 3, 4, 5), "rn_proj() in 5D failed!");
+  
+  //r2_rej(v1, v2)
+  assert_equal(r2_rej(r2(6, -8), r2(1, 2)), r2(8, -4), "r2_rej() failed!");
+  //r3_rej(v1, v2)
+  assert_equal(r3_rej(r3(-7, 3, 9), r3(1, 2, -3)), r3(-5, 7, 3), "r3_rej() failed!");
+  //r4_rej(v1, v2)
+  assert_equal(r4_rej(r4(-1, -3, 4, -20), r4(1, -2, 3, -5)), r4(-4, 3, -5, -5), "r4_rej() failed!");
+  //rn_rej(v1, v2)
+  assert_equal(rn_rej(rn(6, -8), rn(1, 2)), rn(8, -4), "rn_rej() in 2D failed!");
+  assert_equal(rn_rej(rn(-7, 3, 9), rn(1, 2, -3)), rn(-5, 7, 3), "rn_rej() in 3D failed!");
+  assert_equal(rn_rej(rn(-1, -3, 4, -20), rn(1, -2, 3, -5)), rn(-4, 3, -5, -5), "rn_rej() in 4D failed!");
+  assert_equal(rn_rej(rn(5, 4, 4, 5, 2), rn(-1, -2, -3, -4, -5)), rn(4, 2, 1, 1, -3), "rn_rej() in 5D failed!");
 }
