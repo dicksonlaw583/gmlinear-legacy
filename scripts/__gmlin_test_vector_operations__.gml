@@ -16,6 +16,31 @@
   assert_isnt(rn_clone(test_rn_original), test_rn_original, "rn() clone isn't cloning!");
   assert_equal(rn_clone(test_rn_original), test_rn_original, "rn() clone is different!");
   
+  //r2_clone_to(v, vout)
+  var test_r2_cloneto_v = r2(22, 35),
+      test_r2_cloneto_vout = r2_zero();
+  assert_is(r2_clone_to(test_r2_cloneto_v, test_r2_cloneto_vout), test_r2_cloneto_vout, "r2() clone-to isn't cloning!");
+  assert_equal(test_r2_cloneto_vout, test_r2_cloneto_v, "r2() clone-to isn't equal!");
+  assert_isnt(test_r2_cloneto_vout, test_r2_cloneto_v, "r2() clone-to is just a mirror!");
+  //r3_clone_to(v, vout)
+  var test_r3_cloneto_v = r3(17, 29, 51),
+      test_r3_cloneto_vout = r3_zero();
+  assert_is(r3_clone_to(test_r3_cloneto_v, test_r3_cloneto_vout), test_r3_cloneto_vout, "r3() clone-to isn't cloning!");
+  assert_equal(test_r3_cloneto_vout, test_r3_cloneto_v, "r3() clone-to isn't equal!");
+  assert_isnt(test_r3_cloneto_vout, test_r3_cloneto_v, "r3() clone-to is just a mirror!");
+  //r4_clone_to(v, vout)
+  var test_r4_cloneto_v = r4(2, 3, 5, 7),
+      test_r4_cloneto_vout = r4_zero();
+  assert_is(r4_clone_to(test_r4_cloneto_v, test_r4_cloneto_vout), test_r4_cloneto_vout, "r4() clone-to isn't cloning!");
+  assert_equal(test_r4_cloneto_vout, test_r4_cloneto_v, "r4() clone-to isn't equal!");
+  assert_isnt(test_r4_cloneto_vout, test_r4_cloneto_v, "r4() clone-to is just a mirror!");
+  //rn_clone_to(v, vout)
+  var test_rn_cloneto_v = rn(100, 93, 86, 79, 72, 65, 58),
+      test_rn_cloneto_vout = rn_zero(7);
+  assert_is(rn_clone_to(test_rn_cloneto_v, test_rn_cloneto_vout), test_rn_cloneto_vout, "rn() clone-to isn't cloning!");
+  assert_equal(test_rn_cloneto_vout, test_rn_cloneto_v, "rn() clone-to isn't equal!");
+  assert_isnt(test_rn_cloneto_vout, test_rn_cloneto_v, "rn() clone-to is just a mirror!");
+  
   
   //r2_add(v1, v2)
   var test_r2_add_v1 = r2(7, 2),

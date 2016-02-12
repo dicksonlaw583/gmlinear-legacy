@@ -51,6 +51,7 @@
       <scripts name="Vector Operations">
         <scripts name="r2">
           <script>scripts\r2_clone.gml</script>
+          <script>scripts\r2_clone_to.gml</script>
           <script>scripts\r2_add.gml</script>
           <script>scripts\r2_add_to.gml</script>
           <script>scripts\r2_subtract.gml</script>
@@ -66,6 +67,7 @@
         </scripts>
         <scripts name="r3">
           <script>scripts\r3_clone.gml</script>
+          <script>scripts\r3_clone_to.gml</script>
           <script>scripts\r3_add.gml</script>
           <script>scripts\r3_add_to.gml</script>
           <script>scripts\r3_subtract.gml</script>
@@ -83,6 +85,7 @@
         </scripts>
         <scripts name="r4">
           <script>scripts\r4_clone.gml</script>
+          <script>scripts\r4_clone_to.gml</script>
           <script>scripts\r4_add.gml</script>
           <script>scripts\r4_add_to.gml</script>
           <script>scripts\r4_subtract.gml</script>
@@ -98,6 +101,7 @@
         </scripts>
         <scripts name="rn">
           <script>scripts\rn_clone.gml</script>
+          <script>scripts\rn_clone_to.gml</script>
           <script>scripts\rn_add.gml</script>
           <script>scripts\rn_add_to.gml</script>
           <script>scripts\rn_subtract.gml</script>
