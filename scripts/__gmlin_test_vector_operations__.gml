@@ -516,4 +516,17 @@
   assert_is(rn_lerp_to(test_rn_lerpto_v1, test_rn_lerpto_v2, 3/4, test_rn_lerpto_v2), test_rn_lerpto_v2, "rn_lerp_to() at 3/4 returned the wrong vector when vout is v2!");
   assert_equalish(test_rn_lerpto_v2, rn(6, 1, 12, 13, -15, 0), "rn_lerp_to() at 3/4 failed when vout is v2!");
   test_rn_lerpto_v2 = rn(8, -1, 17, 15, -11, 0);
+  
+  
+  //r2_proj(v1, v2)
+  assert_equal(r2_proj(r2(6, -8), r2(1, 2)), r2(-2, -4), "r2_proj() failed!");
+  //r3_proj(v1, v2)
+  assert_equal(r3_proj(r3(-7, 3, 9), r3(1, 2, -3)), r3(-2, -4, 6), "r3_proj() failed!");
+  //r4_proj(v1, v2)
+  assert_equal(r4_proj(r4(-1, -3, 4, -20), r4(1, -2, 3, -5)), r4(3, -6, 9, -15), "r4_proj() failed!");
+  //rn_proj(v1, v2)
+  assert_equal(rn_proj(rn(6, -8), rn(1, 2)), rn(-2, -4), "rn_proj() in 2D failed!");
+  assert_equal(rn_proj(rn(-7, 3, 9), rn(1, 2, -3)), rn(-2, -4, 6), "rn_proj() in 3D failed!");
+  assert_equal(rn_proj(rn(-1, -3, 4, -20), rn(1, -2, 3, -5)), rn(3, -6, 9, -15), "rn_proj() in 4D failed!");
+  assert_equal(rn_proj(rn(5, 4, 4, 5, 2), rn(-1, -2, -3, -4, -5)), rn(1, 2, 3, 4, 5), "rn_proj() in 5D failed!");
 }
