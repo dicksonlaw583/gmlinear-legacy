@@ -60,7 +60,9 @@
           <script>scripts\r2_scale.gml</script>
           <script>scripts\r2_scale_to.gml</script>
           <script>scripts\r2_norm.gml</script>
+          <script>scripts\r2_dist.gml</script>
           <script>scripts\r2_1norm.gml</script>
+          <script>scripts\r2_1dist.gml</script>
           <script>scripts\r2_maxnorm.gml</script>
           <script>scripts\r2_lerp.gml</script>
           <script>scripts\r2_lerp_to.gml</script>
@@ -78,7 +80,9 @@
           <script>scripts\r3_scale.gml</script>
           <script>scripts\r3_scale_to.gml</script>
           <script>scripts\r3_norm.gml</script>
+          <script>scripts\r3_dist.gml</script>
           <script>scripts\r3_1norm.gml</script>
+          <script>scripts\r3_1dist.gml</script>
           <script>scripts\r3_maxnorm.gml</script>
           <script>scripts\r3_lerp.gml</script>
           <script>scripts\r3_lerp_to.gml</script>
@@ -94,7 +98,9 @@
           <script>scripts\r4_scale.gml</script>
           <script>scripts\r4_scale_to.gml</script>
           <script>scripts\r4_norm.gml</script>
+          <script>scripts\r4_dist.gml</script>
           <script>scripts\r4_1norm.gml</script>
+          <script>scripts\r4_1dist.gml</script>
           <script>scripts\r4_maxnorm.gml</script>
           <script>scripts\r4_lerp.gml</script>
           <script>scripts\r4_lerp_to.gml</script>
@@ -110,7 +116,9 @@
           <script>scripts\rn_scale.gml</script>
           <script>scripts\rn_scale_to.gml</script>
           <script>scripts\rn_norm.gml</script>
+          <script>scripts\rn_dist.gml</script>
           <script>scripts\rn_1norm.gml</script>
+          <script>scripts\rn_1dist.gml</script>
           <script>scripts\rn_maxnorm.gml</script>
           <script>scripts\rn_lerp.gml</script>
           <script>scripts\rn_lerp_to.gml</script>

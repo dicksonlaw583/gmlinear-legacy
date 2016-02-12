@@ -315,6 +315,44 @@
   assert_equalish(rn_norm(r4(1, -2, 8, -10)), 13, "rn_norm() at 4D failed!");
   assert_equalish(rn_norm(rn(8, -9, 7, -1, -4, 3, 2, 1)), 15, "rn_norm() at 8D failed!");
   
+  //r2_dist(v1, v2)
+  assert_equalish(r2_dist(r2(6, -8), r2(3, -4)), 5, "r2_dist() failed!");
+  //r3_dist(v1, v2)
+  assert_equalish(r3_dist(r3(2, -10, 11), r3(4, 0, 22)), 15, "r3_dist() failed!");
+  //r4_dist(v1, v2)
+  assert_equalish(r4_dist(r4(1, -2, 8, -10), r4(2, 0, 16, -20)), 13, "r4_dist() failed!");
+  //rn_dist(v1, v2)
+  assert_equalish(rn_dist(r2(6, -8), r2(3, -4)), 5, "rn_dist() at 2D failed!");
+  assert_equalish(rn_dist(r3(2, -10, 11), r3(4, 0, 22)), 15, "rn_dist() at 3D failed!");
+  assert_equalish(rn_dist(r4(1, -2, 8, -10), r4(2, 0, 16, -20)), 13, "rn_dist() at 4D failed!");
+  assert_equalish(rn_dist(rn(8, -9, 7, -1, -4, 3, 2, 1), rn(16, -18, 0, -2, 0, 0, 4, 2)), 15, "rn_dist() at 8D failed!");
+  
+  
+  //r2_1norm(v)
+  assert_equalish(r2_1norm(r2(3, -4)), 7, "r2_1norm() failed!");
+  //r3_1norm(v)
+  assert_equalish(r3_1norm(r3(2, -10, 11)), 23, "r3_1norm() failed!");
+  //r4_1norm(v)
+  assert_equalish(r4_1norm(r4(1, -2, 8, -10)), 21, "r4_1norm() failed!");
+  //rn_1norm(v)
+  assert_equalish(rn_1norm(r2(3, -4)), 7, "rn_1norm() at 2D failed!");
+  assert_equalish(rn_1norm(r3(2, -10, 11)), 23, "rn_1norm() at 3D failed!");
+  assert_equalish(rn_1norm(r4(1, -2, 8, -10)), 21, "rn_1norm() at 4D failed!");
+  assert_equalish(rn_1norm(rn(8, -9, 7, -1, -4, 3, 2, 1)), 35, "rn_1norm() at 8D failed!");
+  
+  //r2_1dist(v1, v2)
+  assert_equalish(r2_1dist(r2(6, -8), r2(3, -4)), 7, "r2_1dist() failed!");
+  //r3_1dist(v1, v2)
+  assert_equalish(r3_1dist(r3(2, -10, 11), r3(4, 0, 22)), 23, "r3_1dist() failed!");
+  //r4_1dist(v1, v2)
+  assert_equalish(r4_1dist(r4(1, -2, 8, -10), r4(2, 0, 16, -20)), 21, "r4_1dist() failed!");
+  //rn_1dist(v1, v2)
+  assert_equalish(rn_1dist(r2(6, -8), r2(3, -4)), 7, "rn_1dist() at 2D failed!");
+  assert_equalish(rn_1dist(r3(2, -10, 11), r3(4, 0, 22)), 23, "rn_1dist() at 3D failed!");
+  assert_equalish(rn_1dist(r4(1, -2, 8, -10), r4(2, 0, 16, -20)), 21, "rn_1dist() at 4D failed!");
+  assert_equalish(rn_1dist(rn(8, -9, 7, -1, -4, 3, 2, 1), rn(16, -18, 0, -2, 0, 0, 4, 2)), 35, "rn_1dist() at 8D failed!");
+  
+  
   //r2_maxnorm(v)
   assert_equalish(r2_maxnorm(r2(3, -4)), 4, "r2_maxnorm() failed!");
   //r3_maxnorm(v)
