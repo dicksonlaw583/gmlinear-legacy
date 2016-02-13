@@ -541,4 +541,57 @@
   assert_equal(rn_rej(rn(-7, 3, 9), rn(1, 2, -3)), rn(-5, 7, 3), "rn_rej() in 3D failed!");
   assert_equal(rn_rej(rn(-1, -3, 4, -20), rn(1, -2, 3, -5)), rn(-4, 3, -5, -5), "rn_rej() in 4D failed!");
   assert_equal(rn_rej(rn(5, 4, 4, 5, 2), rn(-1, -2, -3, -4, -5)), rn(4, 2, 1, 1, -3), "rn_rej() in 5D failed!");
+  
+  //r2_proj_to(v1, v2, vout)
+  var test_r2_projto_v1 = r2(6, -8),
+      test_r2_projto_v2 = r2(1, 2),
+      test_r2_projto_vout = r2_zero();
+  assert_is(r2_proj_to(test_r2_projto_v1, test_r2_projto_v2, test_r2_projto_vout), test_r2_projto_vout, "r2_proj_to() returned the wrong vector!");
+  assert_equal(test_r2_projto_vout, r2(-2, -4), "r2_proj_to() failed!");
+  test_r2_projto_vout = r2_zero();
+  assert_is(r2_proj_to(test_r2_projto_v1, test_r2_projto_v2, test_r2_projto_v1), test_r2_projto_v1, "r2_proj_to() returned the wrong vector when vout is v1!");
+  assert_equal(test_r2_projto_v1, r2(-2, -4), "r2_proj_to() failed when vout is v1!");
+  test_r2_projto_v1 = r2(6, -8);
+  assert_is(r2_proj_to(test_r2_projto_v1, test_r2_projto_v2, test_r2_projto_v2), test_r2_projto_v2, "r2_proj_to() returned the wrong vector when vout is v2!");
+  assert_equal(test_r2_projto_v2, r2(-2, -4), "r2_proj_to() failed when vout is v2!");
+  test_r2_projto_v2 = r2(1, 2);
+  //r3_proj_to(v1, v2, vout)
+  var test_r3_projto_v1 = r3(-7, 3, 9),
+      test_r3_projto_v2 = r3(1, 2, -3),
+      test_r3_projto_vout = r3_zero();
+  assert_is(r3_proj_to(test_r3_projto_v1, test_r3_projto_v2, test_r3_projto_vout), test_r3_projto_vout, "r3_proj_to() returned the wrong vector!");
+  assert_equal(test_r3_projto_vout, r3(-2, -4, 6), "r3_proj_to() failed!");
+  test_r3_projto_vout = r3_zero();
+  assert_is(r3_proj_to(test_r3_projto_v1, test_r3_projto_v2, test_r3_projto_v1), test_r3_projto_v1, "r3_proj_to() returned the wrong vector when vout is v1!");
+  assert_equal(test_r3_projto_v1, r3(-2, -4, 6), "r3_proj_to() failed when vout is v1!");
+  test_r3_projto_v1 = r3(-7, 3, 9);
+  assert_is(r3_proj_to(test_r3_projto_v1, test_r3_projto_v2, test_r3_projto_v2), test_r3_projto_v2, "r3_proj_to() returned the wrong vector when vout is v2!");
+  assert_equal(test_r3_projto_v2, r3(-2, -4, 6), "r3_proj_to() failed when vout is v2!");
+  test_r3_projto_v2 = r3(1, 2, -3);
+  //r4_proj_to(v1, v2, vout)
+  var test_r4_projto_v1 = r4(-1, -3, 4, -20),
+      test_r4_projto_v2 = r4(1, -2, 3, -5),
+      test_r4_projto_vout = r4_zero();
+  assert_is(r4_proj_to(test_r4_projto_v1, test_r4_projto_v2, test_r4_projto_vout), test_r4_projto_vout, "r4_proj_to() returned the wrong vector!");
+  assert_equal(test_r4_projto_vout, r4(3, -6, 9, -15), "r4_proj_to() failed!");
+  test_r4_projto_vout = r4_zero();
+  assert_is(r4_proj_to(test_r4_projto_v1, test_r4_projto_v2, test_r4_projto_v1), test_r4_projto_v1, "r4_proj_to() returned the wrong vector when vout is v1!");
+  assert_equal(test_r4_projto_v1, r4(3, -6, 9, -15), "r4_proj_to() failed when vout is v1!");
+  test_r4_projto_v1 = r4(-1, -3, 4, -20);
+  assert_is(r4_proj_to(test_r4_projto_v1, test_r4_projto_v2, test_r4_projto_v2), test_r4_projto_v2, "r4_proj_to() returned the wrong vector when vout is v2!");
+  assert_equal(test_r4_projto_v2, r4(3, -6, 9, -15), "r4_proj_to() failed when vout is v2!");
+  test_r4_projto_v2 = r4(1, -2, 3, -5);
+  //rn_proj_to(v1, v2, vout)
+  var test_rn_projto_v1 = rn(5, 4, 4, 5, 2),
+      test_rn_projto_v2 = rn(-1, -2, -3, -4, -5),
+      test_rn_projto_vout = rn_zero(5);
+  assert_is(rn_proj_to(test_rn_projto_v1, test_rn_projto_v2, test_rn_projto_vout), test_rn_projto_vout, "rn_proj_to() returned the wrong vector!");
+  assert_equal(test_rn_projto_vout, rn(1, 2, 3, 4, 5), "rn_proj_to() failed!");
+  test_rn_projto_vout = rn_zero(5);
+  assert_is(rn_proj_to(test_rn_projto_v1, test_rn_projto_v2, test_rn_projto_v1), test_rn_projto_v1, "rn_proj_to() returned the wrong vector when vout is v1!");
+  assert_equal(test_rn_projto_v1, rn(1, 2, 3, 4, 5), "rn_proj_to() failed when vout is v1!");
+  test_rn_projto_v1 = rn(5, 4, 4, 5, 2);
+  assert_is(rn_proj_to(test_rn_projto_v1, test_rn_projto_v2, test_rn_projto_v2), test_rn_projto_v2, "rn_proj_to() returned the wrong vector when vout is v2!");
+  assert_equal(test_rn_projto_v2, rn(1, 2, 3, 4, 5), "rn_proj_to() failed when vout is v2!");
+  test_rn_projto_v2 = rn(-1, -2, -3, -4, -5);
 }
