@@ -59,6 +59,8 @@
           <script>scripts\r2_dot.gml</script>
           <script>scripts\r2_scale.gml</script>
           <script>scripts\r2_scale_to.gml</script>
+          <script>scripts\r2_unit.gml</script>
+          <script>scripts\r2_unit_to.gml</script>
           <script>scripts\r2_norm.gml</script>
           <script>scripts\r2_dist.gml</script>
           <script>scripts\r2_1norm.gml</script>
@@ -83,6 +85,8 @@
           <script>scripts\r3_cross_to.gml</script>
           <script>scripts\r3_scale.gml</script>
           <script>scripts\r3_scale_to.gml</script>
+          <script>scripts\r3_unit.gml</script>
+          <script>scripts\r3_unit_to.gml</script>
           <script>scripts\r3_norm.gml</script>
           <script>scripts\r3_dist.gml</script>
           <script>scripts\r3_1norm.gml</script>
@@ -105,6 +109,8 @@
           <script>scripts\r4_dot.gml</script>
           <script>scripts\r4_scale.gml</script>
           <script>scripts\r4_scale_to.gml</script>
+          <script>scripts\r4_unit.gml</script>
+          <script>scripts\r4_unit_to.gml</script>
           <script>scripts\r4_norm.gml</script>
           <script>scripts\r4_dist.gml</script>
           <script>scripts\r4_1norm.gml</script>
@@ -127,6 +133,8 @@
           <script>scripts\rn_dot.gml</script>
           <script>scripts\rn_scale.gml</script>
           <script>scripts\rn_scale_to.gml</script>
+          <script>scripts\rn_unit.gml</script>
+          <script>scripts\rn_unit_to.gml</script>
           <script>scripts\rn_norm.gml</script>
           <script>scripts\rn_dist.gml</script>
           <script>scripts\rn_1norm.gml</script>

@@ -303,6 +303,56 @@
   test_rn_scaleto_vout = rn_zero(6);
   
   
+  //r2_unit(v)
+  assert_equalish(r2_unit(r2(3, -4)), r2(3/5, -4/5), "r2_unit() failed!");
+  //r3_unit(v)
+  assert_equalish(r3_unit(r3(2, -10, 11)), r3(2/15, -2/3, 11/15), "r3_unit() failed!");
+  //r4_unit(v)
+  assert_equalish(r4_unit(r4(1, -2, 8, -10)), r4(1/13, -2/13, 8/13, -10/13), "r4_unit() failed!");
+  //rn_unit(v)
+  assert_equalish(rn_unit(rn(3, -4)), rn(3/5, -4/5), "rn_unit() at 2D failed!");
+  assert_equalish(rn_unit(rn(2, -10, 11)), rn(2/15, -2/3, 11/15), "rn_unit() at 3D failed!");
+  assert_equalish(rn_unit(rn(1, -2, 8, -10)), rn(1/13, -2/13, 8/13, -10/13), "rn_unit() at 4D failed!");
+  assert_equalish(rn_unit(rn(8, -9, 7, -1, -4, 3, 2, 1)), rn(8/15, -3/5, 7/15, -1/15, -4/15, 1/5, 2/15, 1/15), "rn_unit() at 8D failed!");
+  
+  //r2_unit_to(v, vout)
+  var test_r2_unitto_v = r2(3, -4),
+      test_r2_unitto_vout = r2_zero();
+  assert_is(r2_unit_to(test_r2_unitto_v, test_r2_unitto_vout), test_r2_unitto_vout, "r2_unit_to() returned the wrong vector!");
+  assert_equalish(test_r2_unitto_vout, r2(3/5, -4/5), "r2_unit_to() failed!");
+  test_r2_unitto_vout = r2_zero();
+  assert_is(r2_unit_to(test_r2_unitto_v, test_r2_unitto_v), test_r2_unitto_v, "r2_unit_to() returned the wrong vector when vout is v!");
+  assert_equalish(test_r2_unitto_v, r2(3/5, -4/5), "r2_unit_to() failed when vout is v!");
+  test_r2_unitto_v = r2(3, -4);
+  //r3_unit_to(v, vout)
+  var test_r3_unitto_v = r3(2, -10, 11),
+      test_r3_unitto_vout = r3_zero();
+  assert_is(r3_unit_to(test_r3_unitto_v, test_r3_unitto_vout), test_r3_unitto_vout, "r3_unit_to() returned the wrong vector!");
+  assert_equalish(test_r3_unitto_vout, r3(2/15, -2/3, 11/15), "r3_unit_to() failed!");
+  test_r3_unitto_vout = r3_zero();
+  assert_is(r3_unit_to(test_r3_unitto_v, test_r3_unitto_v), test_r3_unitto_v, "r3_unit_to() returned the wrong vector when vout is v!");
+  assert_equalish(test_r3_unitto_v, r3(2/15, -2/3, 11/15), "r3_unit_to() failed when vout is v!");
+  test_r3_unitto_v = r3(2, -10, 11);
+  //r4_unit_to(v, vout)
+  var test_r4_unitto_v = r4(1, -2, 8, -10),
+      test_r4_unitto_vout = r4_zero();
+  assert_is(r4_unit_to(test_r4_unitto_v, test_r4_unitto_vout), test_r4_unitto_vout, "r4_unit_to() returned the wrong vector!");
+  assert_equalish(test_r4_unitto_vout, r4(1/13, -2/13, 8/13, -10/13), "r4_unit_to() failed!");
+  test_r4_unitto_vout = r4_zero();
+  assert_is(r4_unit_to(test_r4_unitto_v, test_r4_unitto_v), test_r4_unitto_v, "r4_unit_to() returned the wrong vector when vout is v!");
+  assert_equalish(test_r4_unitto_v, r4(1/13, -2/13, 8/13, -10/13), "r4_unit_to() failed when vout is v!");
+  test_r4_unitto_v = r4(1, -2, 8, -10);
+  //rn_unit_to(v, vout)
+  var test_rn_unitto_v = rn(8, -9, 7, -1, -4, 3, 2, 1),
+      test_rn_unitto_vout = rn_zero(8);
+  assert_is(rn_unit_to(test_rn_unitto_v, test_rn_unitto_vout), test_rn_unitto_vout, "rn_unit_to() returned the wrong vector!");
+  assert_equalish(test_rn_unitto_vout, rn(8/15, -3/5, 7/15, -1/15, -4/15, 1/5, 2/15, 1/15), "rn_unit_to() failed!");
+  test_rn_unitto_vout = rn_zero(8);
+  assert_is(rn_unit_to(test_rn_unitto_v, test_rn_unitto_v), test_rn_unitto_v, "rn_unit_to() returned the wrong vector when vout is v!");
+  assert_equalish(test_rn_unitto_v, rn(8/15, -3/5, 7/15, -1/15, -4/15, 1/5, 2/15, 1/15), "rn_unit_to() failed when vout is v!");
+  test_rn_unitto_v = rn(8, -9, 7, -1, -4, 3, 2, 1);
+  
+  
   //r2_norm(v)
   assert_equalish(r2_norm(r2(3, -4)), 5, "r2_norm() failed!");
   //r3_norm(v)
