@@ -69,6 +69,7 @@
           <script>scripts\r2_proj.gml</script>
           <script>scripts\r2_proj_to.gml</script>
           <script>scripts\r2_rej.gml</script>
+          <script>scripts\r2_rej_to.gml</script>
         </scripts>
         <scripts name="r3">
           <script>scripts\r3_clone.gml</script>
@@ -92,6 +93,7 @@
           <script>scripts\r3_proj.gml</script>
           <script>scripts\r3_proj_to.gml</script>
           <script>scripts\r3_rej.gml</script>
+          <script>scripts\r3_rej_to.gml</script>
         </scripts>
         <scripts name="r4">
           <script>scripts\r4_clone.gml</script>
@@ -113,6 +115,7 @@
           <script>scripts\r4_proj.gml</script>
           <script>scripts\r4_proj_to.gml</script>
           <script>scripts\r4_rej.gml</script>
+          <script>scripts\r4_rej_to.gml</script>
         </scripts>
         <scripts name="rn">
           <script>scripts\rn_clone.gml</script>
@@ -134,6 +137,7 @@
           <script>scripts\rn_proj.gml</script>
           <script>scripts\rn_proj_to.gml</script>
           <script>scripts\rn_rej.gml</script>
+          <script>scripts\rn_rej_to.gml</script>
         </scripts>
       </scripts>
       <scripts name="Matrix Operations">
