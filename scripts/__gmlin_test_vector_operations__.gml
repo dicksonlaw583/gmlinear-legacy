@@ -842,4 +842,40 @@
   assert_equalish(test_r2_polrecto_v, r2(0, -2), "r2_pol_rec_to() failed to change vector when output is same as source!");
   test_r2_polrecto_v = r2(2, -pi/2);
   test_r2_polrecto_vout = r2_zero();
+  
+  //r2_gmp_pol(v_ld)
+  assert_equalish(r2_gmp_pol(r2(1, 0)), r2(1, 0), "r2_gmp_pol() failed at (1, 0)!");
+  assert_equalish(r2_gmp_pol(r2(1, 90)), r2(1, -pi/2), "r2_gmp_pol() failed at (0, -1)!");
+  assert_equalish(r2_gmp_pol(r2(1, -180)), r2(1, pi), "r2_gmp_pol() failed at (-1, 0)!");
+  assert_equalish(r2_gmp_pol(r2(1, -90)), r2(1, pi/2), "r2_gmp_pol() failed at (0, 1)!");
+  //r2_gmp_pol_to(vi_ld, vo_xy)
+  var test_r2_gmppolto_v = r2(2, 90),
+      test_r2_gmppolto_vout = r2_zero();
+  assert_is(r2_gmp_pol_to(r2(2, 90), test_r2_gmppolto_vout), test_r2_gmppolto_vout, "r2_gmp_pol_to() returned wrong vector when output is different from source!"); 
+  assert_equalish(r2_gmp_pol_to(r2(2, 0), test_r2_gmppolto_vout), r2(2, 0), "r2_gmp_pol_to() failed at (2, 0)!");
+  assert_equalish(r2_gmp_pol_to(r2(2, 90), test_r2_gmppolto_vout), r2(2, -pi/2), "r2_gmp_pol_to() failed at (2, 90)!");
+  assert_equalish(r2_gmp_pol_to(r2(2, -180), test_r2_gmppolto_vout), r2(2, pi), "r2_gmp_pol_to() failed at (2, -180)!");
+  assert_equalish(r2_gmp_pol_to(r2(2, -90), test_r2_gmppolto_vout), r2(2, pi/2), "r2_gmp_pol_to() failed at (2, -90)!");
+  assert_is(r2_gmp_pol_to(test_r2_gmppolto_v, test_r2_gmppolto_v), test_r2_gmppolto_v, "r2_gmp_pol_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r2_gmppolto_v, r2(2, -pi/2), "r2_gmp_pol_to() failed to change vector when output is same as source!");
+  test_r2_gmppolto_v = r2(2, 90);
+  test_r2_gmppolto_vout = r2_zero();
+  
+  //r2_pol_gmp(v_ld)
+  assert_equalish(r2_pol_gmp(r2(1, 0)), r2(1, 0), "r2_pol_gmp() failed at (1, 0)!");
+  assert_equalish(r2_pol_gmp(r2(1, -pi/2)), r2(1, 90), "r2_pol_gmp() failed at (0, -1)!");
+  assert_equalish(r2_pol_gmp(r2(1, pi)), r2(1, -180), "r2_pol_gmp() failed at (-1, 0)!");
+  assert_equalish(r2_pol_gmp(r2(1, pi/2)), r2(1, -90), "r2_pol_gmp() failed at (0, 1)!");
+  //r2_pol_gmp_to(vi_ld, vo_xy)
+  var test_r2_polgmpto_v = r2(2, -pi/2),
+      test_r2_polgmpto_vout = r2_zero();
+  assert_is(r2_pol_gmp_to(r2(2, -pi/2), test_r2_polgmpto_vout), test_r2_polgmpto_vout, "r2_pol_gmp_to() returned wrong vector when output is different from source!"); 
+  assert_equalish(r2_pol_gmp_to(r2(2, 0), test_r2_polgmpto_vout), r2(2, 0), "r2_pol_gmp_to() failed at (2, 0)!");
+  assert_equalish(r2_pol_gmp_to(r2(2, -pi/2), test_r2_polgmpto_vout), r2(2, 90), "r2_pol_gmp_to() failed at (2, 90)!");
+  assert_equalish(r2_pol_gmp_to(r2(2, pi), test_r2_polgmpto_vout), r2(2, -180), "r2_pol_gmp_to() failed at (2, -180)!");
+  assert_equalish(r2_pol_gmp_to(r2(2, pi/2), test_r2_polgmpto_vout), r2(2, -90), "r2_pol_gmp_to() failed at (2, -90)!");
+  assert_is(r2_pol_gmp_to(test_r2_polgmpto_v, test_r2_polgmpto_v), test_r2_polgmpto_v, "r2_pol_gmp_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r2_polgmpto_v, r2(2, 90), "r2_pol_gmp_to() failed to change vector when output is same as source!");
+  test_r2_polgmpto_v = r2(2, -pi/2);
+  test_r2_polgmpto_vout = r2_zero();
 }
