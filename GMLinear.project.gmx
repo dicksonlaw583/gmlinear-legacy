@@ -78,6 +78,10 @@
           <script>scripts\r2_encode_base64.gml</script>
           <script>scripts\r2_decode_base64.gml</script>
           <script>scripts\r2_decode_base64_to.gml</script>
+          <script>scripts\r2_rec_gmp.gml</script>
+          <script>scripts\r2_rec_gmp_to.gml</script>
+          <script>scripts\r2_gmp_rec.gml</script>
+          <script>scripts\r2_gmp_rec_to.gml</script>
         </scripts>
         <scripts name="r3">
           <script>scripts\r3_clone.gml</script>

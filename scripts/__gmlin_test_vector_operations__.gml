@@ -769,4 +769,41 @@
     assert_is(rn_decode_base64_to(test_rn_encodeb64_enc, 5, test_rn_encodeb64_vout), test_rn_encodeb64_vout, "rn_decode_to_base64() returning wrong vector!");
     assert_equal(test_rn_encodeb64_vout, test_rn_encodeb64_v_orig, "rn_encode_base64()-rn_decode_base64_to() roundtrip mismatch!");
   }
+  
+  
+  //r2_rec_gmp(v_xy)
+  assert_equalish(r2_rec_gmp(r2(1, 0)), r2(1, 0), "r2_rec_gmp() failed at (1, 0)!");
+  assert_equalish(r2_rec_gmp(r2(0, -1)), r2(1, 90), "r2_rec_gmp() failed at (0, -1)!");
+  assert_equalish(r2_rec_gmp(r2(-1, 0)), r2(1, -180), "r2_rec_gmp() failed at (-1, 0)!");
+  assert_equalish(r2_rec_gmp(r2(0, 1)), r2(1, -90), "r2_rec_gmp() failed at (0, 1)!");
+  //r2_rec_gmp_to(vi_xy, vo_ld)
+  var test_r2_recgmpto_v = r2(0, -2),
+      test_r2_recgmpto_vout = r2_zero();
+  assert_is(r2_rec_gmp_to(r2(2, 0), test_r2_recgmpto_vout), test_r2_recgmpto_vout, "r2_rec_gmp_to() returned wrong vector when output is different from source!"); 
+  assert_equalish(r2_rec_gmp_to(r2(2, 0), test_r2_recgmpto_vout), r2(2, 0), "r2_rec_gmp_to() failed at (2, 0)!");
+  assert_equalish(r2_rec_gmp_to(r2(0, -2), test_r2_recgmpto_vout), r2(2, 90), "r2_rec_gmp_to() failed at (0, -2)!");
+  assert_equalish(r2_rec_gmp_to(r2(-2, 0), test_r2_recgmpto_vout), r2(2, -180), "r2_rec_gmp_to() failed at (-2, 0)!");
+  assert_equalish(r2_rec_gmp_to(r2(0, 2), test_r2_recgmpto_vout), r2(2, -90), "r2_rec_gmp_to() failed at (0, 2)!");
+  assert_is(r2_rec_gmp_to(test_r2_recgmpto_v, test_r2_recgmpto_v), test_r2_recgmpto_v, "r2_rec_gmp_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r2_recgmpto_v, r2(2, 90), "r2_rec_gmp_to() failed to change vector when output is same as source!");
+  test_r2_recgmpto_v = r2(0, -2);
+  test_r2_recgmpto_vout = r2_zero();
+  
+  //r2_gmp_rec(v_ld)
+  assert_equalish(r2_gmp_rec(r2(1, 0)), r2(1, 0), "r2_gmp_rec() failed at (1, 0)!");
+  assert_equalish(r2_gmp_rec(r2(1, 90)), r2(0, -1), "r2_gmp_rec() failed at (0, -1)!");
+  assert_equalish(r2_gmp_rec(r2(1, -180)), r2(-1, 0), "r2_gmp_rec() failed at (-1, 0)!");
+  assert_equalish(r2_gmp_rec(r2(1, -90)), r2(0, 1), "r2_gmp_rec() failed at (0, 1)!");
+  //r2_gmp_rec_to(vi_ld, vo_xy)
+  var test_r2_gmprecto_v = r2(2, 90),
+      test_r2_gmprecto_vout = r2_zero();
+  assert_is(r2_gmp_rec_to(r2(2, 90), test_r2_gmprecto_vout), test_r2_gmprecto_vout, "r2_gmp_rec_to() returned wrong vector when output is different from source!"); 
+  assert_equalish(r2_gmp_rec_to(r2(2, 0), test_r2_gmprecto_vout), r2(2, 0), "r2_gmp_rec_to() failed at (2, 0)!");
+  assert_equalish(r2_gmp_rec_to(r2(2, 90), test_r2_gmprecto_vout), r2(0, -2), "r2_gmp_rec_to() failed at (2, 90)!");
+  assert_equalish(r2_gmp_rec_to(r2(2, -180), test_r2_gmprecto_vout), r2(-2, 0), "r2_gmp_rec_to() failed at (2, -180)!");
+  assert_equalish(r2_gmp_rec_to(r2(2, -90), test_r2_gmprecto_vout), r2(0, 2), "r2_gmp_rec_to() failed at (2, -90)!");
+  assert_is(r2_gmp_rec_to(test_r2_gmprecto_v, test_r2_gmprecto_v), test_r2_gmprecto_v, "r2_gmp_rec_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r2_gmprecto_v, r2(0, -2), "r2_gmp_rec_to() failed to change vector when output is same as source!");
+  test_r2_gmprecto_v = r2(2, 90);
+  test_r2_gmprecto_vout = r2_zero();
 }
