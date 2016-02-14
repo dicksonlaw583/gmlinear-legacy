@@ -199,18 +199,23 @@
       <scripts name="Matrix Operations">
         <scripts name="r22">
           <script>scripts\r22_clone.gml</script>
+          <script>scripts\r22_clone_to.gml</script>
         </scripts>
         <scripts name="r33">
           <script>scripts\r33_clone.gml</script>
+          <script>scripts\r33_clone_to.gml</script>
         </scripts>
         <scripts name="r44">
           <script>scripts\r44_clone.gml</script>
+          <script>scripts\r44_clone_to.gml</script>
         </scripts>
         <scripts name="rmn">
           <script>scripts\rmn_clone.gml</script>
+          <script>scripts\rmn_clone_to.gml</script>
         </scripts>
         <scripts name="rnn">
           <script>scripts\rnn_clone.gml</script>
+          <script>scripts\rnn_clone_to.gml</script>
         </scripts>
       </scripts>
     </scripts>
