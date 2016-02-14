@@ -481,4 +481,89 @@
   assert_is(rnn_multiply_to(test_rnn_multiply_to_M1, test_rnn_multiply_to_M2, test_rnn_multiply_to_M2), test_rnn_multiply_to_M2, "rnn_multiply_to() is returning the wrong matrix when Mout is M2!");
   assert_equal(test_rnn_multiply_to_M2, test_rnn_multiply_to_solution, "rnn_multiply_to() failed when Mout is M2!");
   rnn_clone_to(test_rnn_multiply_to_M2_orig, test_rnn_multiply_to_M2);
+  
+  
+  //r22_transpose(M1)
+  var test_r22_transpose_M1 = r22(1, 2, 3, 4),
+      test_r22_transpose_solution = r22(1, 3, 2, 4);
+  assert_equal(r22_transpose(test_r22_transpose_M1), test_r22_transpose_solution, "r22_transpose() failed!");
+  //r33_transpose(M1)
+  var test_r33_transpose_M1 = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_transpose_solution = r33(1, 4, 7, 2, 5, 8, 3, 6, 9);
+  assert_equal(r33_transpose(test_r33_transpose_M1), test_r33_transpose_solution, "r33_transpose() failed!");
+  //r44_transpose(M1)
+  var test_r44_transpose_M1 = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_transpose_solution = r44(1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15, 4, 8, 12, 16);
+  assert_equal(r44_transpose(test_r44_transpose_M1), test_r44_transpose_solution, "r44_transpose() failed!");
+  //rmn_transpose(M1)
+  var test_rmn_transpose_M1 = rmn(5, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      test_rmn_transpose_solution = rmn(2, 5, 1, 3, 5, 7, 9, 2, 4, 6, 8, 10);
+  assert_equal(rmn_transpose(test_rmn_transpose_M1), test_rmn_transpose_solution, "rmn_transpose() failed on 5x2!");
+  assert_equal(rmn_transpose(test_r22_transpose_M1), test_r22_transpose_solution, "rmn_transpose() failed on 2x2!");
+  assert_equal(rmn_transpose(test_r33_transpose_M1), test_r33_transpose_solution, "rmn_transpose() failed on 3x3!");
+  assert_equal(rmn_transpose(test_r44_transpose_M1), test_r44_transpose_solution, "rmn_transpose() failed on 4x4!");
+  //rnn_transpose(M1)
+  assert_equal(rnn_transpose(test_r22_transpose_M1), test_r22_transpose_solution, "rnn_transpose() failed on 2x2!");
+  assert_equal(rnn_transpose(test_r33_transpose_M1), test_r33_transpose_solution, "rnn_transpose() failed on 3x3!");
+  assert_equal(rnn_transpose(test_r44_transpose_M1), test_r44_transpose_solution, "rnn_transpose() failed on 4x4!");
+  
+  //r22_transpose_to(M1, Mout)
+  var test_r22_transpose_to_M1_orig = r22(1, 2, 3, 4),
+      test_r22_transpose_to_solution = r22(1, 3, 2, 4),
+      test_r22_transpose_to_M1 = r22_clone(test_r22_transpose_to_M1_orig),
+      test_r22_transpose_to_Mout = r22_zero();
+  assert_is(r22_transpose_to(test_r22_transpose_to_M1, test_r22_transpose_to_Mout), test_r22_transpose_to_Mout, "r22_transpose_to() is returning the wrong matrix!");
+  assert_equal(test_r22_transpose_to_Mout, test_r22_transpose_to_solution, "r22_transpose_to() failed!");
+  test_r22_transpose_to_Mout = r22_zero();
+  assert_is(r22_transpose_to(test_r22_transpose_to_M1, test_r22_transpose_to_M1), test_r22_transpose_to_M1, "r22_transpose_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r22_transpose_to_M1, test_r22_transpose_to_solution, "r22_transpose_to() failed when Mout is M1!");
+  r22_clone_to(test_r22_transpose_to_M1_orig, test_r22_transpose_to_M1);
+  //r33_transpose_to(M1, Mout)
+  var test_r33_transpose_to_M1_orig = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_transpose_to_solution = r33(1, 4, 7, 2, 5, 8, 3, 6, 9),
+      test_r33_transpose_to_M1 = r33_clone(test_r33_transpose_to_M1_orig),
+      test_r33_transpose_to_Mout = r33_zero();
+  assert_is(r33_transpose_to(test_r33_transpose_to_M1, test_r33_transpose_to_Mout), test_r33_transpose_to_Mout, "r33_transpose_to() is returning the wrong matrix!");
+  assert_equal(test_r33_transpose_to_Mout, test_r33_transpose_to_solution, "r33_transpose_to() failed!");
+  test_r33_transpose_to_Mout = r33_zero();
+  assert_is(r33_transpose_to(test_r33_transpose_to_M1, test_r33_transpose_to_M1), test_r33_transpose_to_M1, "r33_transpose_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r33_transpose_to_M1, test_r33_transpose_to_solution, "r33_transpose_to() failed when Mout is M1!");
+  r33_clone_to(test_r33_transpose_to_M1_orig, test_r33_transpose_to_M1);
+  //r44_transpose_to(M1, Mout)
+  var test_r44_transpose_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_transpose_to_solution = r44(1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15, 4, 8, 12, 16),
+      test_r44_transpose_to_M1 = r44_clone(test_r44_transpose_to_M1_orig),
+      test_r44_transpose_to_Mout = r44_zero();
+  assert_is(r44_transpose_to(test_r44_transpose_to_M1, test_r44_transpose_to_Mout), test_r44_transpose_to_Mout, "r44_transpose_to() is returning the wrong matrix!");
+  assert_equal(test_r44_transpose_to_Mout, test_r44_transpose_to_solution, "r44_transpose_to() failed!");
+  test_r44_transpose_to_Mout = r44_zero();
+  assert_is(r44_transpose_to(test_r44_transpose_to_M1, test_r44_transpose_to_M1), test_r44_transpose_to_M1, "r44_transpose_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r44_transpose_to_M1, test_r44_transpose_to_solution, "r44_transpose_to() failed when Mout is M1!");
+  r44_clone_to(test_r44_transpose_to_M1_orig, test_r44_transpose_to_M1);
+  //rmn_transpose_to(M1, Mout)
+  var test_rmn_transpose_to_M1_orig = rmn(5, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      test_rmn_transpose_to_solution = rmn(2, 5, 1, 3, 5, 7, 9, 2, 4, 6, 8, 10),
+      test_rmn_transpose_to_M1 = rmn_clone(test_rmn_transpose_to_M1_orig),
+      test_rmn_transpose_to_Mout = rmn_zero(2, 5);
+  assert_is(rmn_transpose_to(test_rmn_transpose_to_M1, test_rmn_transpose_to_Mout), test_rmn_transpose_to_Mout, "rmn_transpose_to() is returning the wrong matrix!");
+  assert_equal(test_rmn_transpose_to_Mout, test_rmn_transpose_to_solution, "rmn_transpose_to() failed!");
+  test_rmn_tranpose_to_M1 = 0;
+  test_rmn_transpose_to_M1 = rmn_clone(test_r33_transpose_to_M1_orig);
+  test_rmn_transpose_to_Mout = rmn_zero(3, 3);
+  assert_is(rmn_transpose_to(test_rmn_transpose_to_M1, test_rmn_transpose_to_M1), test_rmn_transpose_to_M1, "rmn_transpose_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_rmn_transpose_to_M1, test_r33_transpose_to_solution, "rmn_transpose_to() failed when Mout is M1!");
+  test_rmn_transpose_to_M1 = 0;
+  test_rmn_transpose_to_M1 = rmn_clone(test_rmn_transpose_to_M1_orig);
+  test_rmn_transpose_to_Mout = rmn_zero(2, 5);
+  //rnn_transpose_to(M1, Mout)
+  var test_rnn_transpose_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_rnn_transpose_to_solution = r44(1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15, 4, 8, 12, 16),
+      test_rnn_transpose_to_M1 = rnn_clone(test_rnn_transpose_to_M1_orig),
+      test_rnn_transpose_to_Mout = rnn_zero(4);
+  assert_is(rnn_transpose_to(test_rnn_transpose_to_M1, test_rnn_transpose_to_Mout), test_rnn_transpose_to_Mout, "rnn_transpose_to() is returning the wrong matrix!");
+  assert_equal(test_rnn_transpose_to_Mout, test_rnn_transpose_to_solution, "rnn_transpose_to() failed!");
+  test_rnn_transpose_to_Mout = rnn_zero(4);
+  assert_is(rnn_transpose_to(test_rnn_transpose_to_M1, test_rnn_transpose_to_M1), test_rnn_transpose_to_M1, "rnn_transpose_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_rnn_transpose_to_M1, test_rnn_transpose_to_solution, "rnn_transpose_to() failed when Mout is M1!");
+  rnn_clone_to(test_rnn_transpose_to_M1_orig, test_rnn_transpose_to_M1);
 }
