@@ -878,4 +878,112 @@
   assert_equalish(test_r2_polgmpto_v, r2(2, 90), "r2_pol_gmp_to() failed to change vector when output is same as source!");
   test_r2_polgmpto_v = r2(2, -pi/2);
   test_r2_polgmpto_vout = r2_zero();
+  
+  //r3_rec_cyl(v_xyz)
+  assert_equalish(r3_rec_cyl(r3(3, 0, 4)), r3(3, 0, 4), "r3_rec_cyl() failed at (3, 0, 4)!");
+  assert_equalish(r3_rec_cyl(r3(0, 3, 5)), r3(3, pi/2, 5), "r3_rec_cyl() failed at (0, 3, 5)!");
+  assert_equalish(r3_rec_cyl(r3(-3, 0, -4)), r3(3, pi, -4), "r3_rec_cyl() failed at (-3, 0, -4)!");
+  assert_equalish(r3_rec_cyl(r3(0, -3, -5)), r3(3, -pi/2, -5), "r3_rec_cyl() failed at (0, -3, -5)!");
+  //r3_rec_cyl_to(vi_xyz, vo_rpz)
+  var test_r3_reccylto_v = r3(0, 3, 5),
+      test_r3_reccylto_vout = r3_zero();
+  assert_is(r3_rec_cyl_to(test_r3_reccylto_v, test_r3_reccylto_vout), test_r3_reccylto_vout, "r3_rec_cyl_to() returned wrong vector when output is different from source!");
+  assert_equalish(r3_rec_cyl_to(r3(3, 0, 4), test_r3_reccylto_vout), r3(3, 0, 4), "r3_rec_cyl_to() failed at (3, 0, 4)!");
+  assert_equalish(r3_rec_cyl_to(r3(0, 3, 5), test_r3_reccylto_vout), r3(3, pi/2, 5), "r3_rec_cyl_to() failed at (0, 3, 5)!");
+  assert_equalish(r3_rec_cyl_to(r3(-3, 0, -4), test_r3_reccylto_vout), r3(3, pi, -4), "r3_rec_cyl_to() failed at (-3, 0, -4)!");
+  assert_equalish(r3_rec_cyl_to(r3(0, -3, -5), test_r3_reccylto_vout), r3(3, -pi/2, -5), "r3_rec_cyl_to() failed at (0, -3, -5)!");
+  assert_is(r3_rec_cyl_to(test_r3_reccylto_v, test_r3_reccylto_v), test_r3_reccylto_v, "r3_rec_cyl_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r3_reccylto_v, r3(3, pi/2, 5), "r3_rec_cyl_to() failed to change vector when output is same as source!");
+  test_r3_reccylto_v = r3(0, 3, 5);
+  test_r3_reccylto_vout = r3_zero();
+  
+  //r3_cyl_rec(v_xyz)
+  assert_equalish(r3_cyl_rec(r3(3, 0, 4)), r3(3, 0, 4), "r3_cyl_rec() failed at (3, 0, 4)!");
+  assert_equalish(r3_cyl_rec(r3(3, pi/2, 5)), r3(0, 3, 5), "r3_cyl_rec() failed at (0, 3, 5)!");
+  assert_equalish(r3_cyl_rec(r3(3, pi, -4)), r3(-3, 0, -4), "r3_cyl_rec() failed at (-3, 0, -4)!");
+  assert_equalish(r3_cyl_rec(r3(3, -pi/2, -5)), r3(0, -3, -5), "r3_cyl_rec() failed at (0, -3, -5)!");
+  //r3_cyl_rec_to(vi_xyz, vo_rpz)
+  var test_r3_cylrecto_v = r3(3, pi/2, 5),
+      test_r3_cylrecto_vout = r3_zero();
+  assert_is(r3_cyl_rec_to(test_r3_cylrecto_v, test_r3_cylrecto_vout), test_r3_cylrecto_vout, "r3_cyl_rec_to() returned wrong vector when output is different from source!");
+  assert_equalish(r3_cyl_rec_to(r3(3, 0, 4), test_r3_cylrecto_vout), r3(3, 0, 4), "r3_cyl_rec_to() failed at (3, 0, 4)!");
+  assert_equalish(r3_cyl_rec_to(r3(3, pi/2, 5), test_r3_cylrecto_vout), r3(0, 3, 5), "r3_cyl_rec_to() failed at (0, 3, 5)!");
+  assert_equalish(r3_cyl_rec_to(r3(3, pi, -4), test_r3_cylrecto_vout), r3(-3, 0, -4), "r3_cyl_rec_to() failed at (-3, 0, -4)!");
+  assert_equalish(r3_cyl_rec_to(r3(3, -pi/2, -5), test_r3_cylrecto_vout), r3(0, -3, -5), "r3_cyl_rec_to() failed at (0, -3, -5)!");
+  assert_is(r3_cyl_rec_to(test_r3_cylrecto_v, test_r3_cylrecto_v), test_r3_cylrecto_v, "r3_cyl_rec_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r3_cylrecto_v, r3(0, 3, 5), "r3_cyl_rec_to() failed to change vector when output is same as source!");
+  test_r3_cylrecto_v = r3(3, pi/2, 5);
+  test_r3_cylrecto_vout = r3_zero();
+  
+  //r3_rec_sph(v_xyz)
+  assert_equalish(r3_rec_sph(r3(3, 0, 4)), r3(5, 0, arctan(3/4)), "r3_rec_sph() failed at (3, 0, 4)!");
+  assert_equalish(r3_rec_sph(r3(0, 3, 4)), r3(5, pi/2, arctan(3/4)), "r3_rec_sph() failed at (0, 3, 4)!");
+  assert_equalish(r3_rec_sph(r3(-3, 0, 4)), r3(5, pi, arctan(3/4)), "r3_rec_sph() failed at (-3, 0, 4)!");
+  assert_equalish(r3_rec_sph(r3(0, -3, -4)), r3(5, -pi/2, pi-arctan(3/4)), "r3_rec_sph() failed at (0, -3, -4)!");
+  //r3_rec_sph_to(vi_xyz, vo_rpt)
+  var test_r3_recsphto_v = r3(0, 3, 4),
+      test_r3_recsphto_vout = r3_zero();
+  assert_is(r3_rec_sph_to(test_r3_recsphto_v, test_r3_recsphto_vout), test_r3_recsphto_vout, "r3_rec_sph_to() returned wrong vector when output is different from source!");
+  assert_equalish(r3_rec_sph_to(r3(3, 0, 4), test_r3_recsphto_vout), r3(5, 0, arctan(3/4)), "r3_rec_sph_to() failed at (3, 0, 4)!");
+  assert_equalish(r3_rec_sph_to(r3(0, 3, 4), test_r3_recsphto_vout), r3(5, pi/2, arctan(3/4)), "r3_rec_sph_to() failed at (0, 3, 4)!");
+  assert_equalish(r3_rec_sph_to(r3(-3, 0, 4), test_r3_recsphto_vout), r3(5, pi, arctan(3/4)), "r3_rec_sph_to() failed at (-3, 0, 4)!");
+  assert_equalish(r3_rec_sph_to(r3(0, -3, -4), test_r3_recsphto_vout), r3(5, -pi/2, pi-arctan(3/4)), "r3_rec_sph_to() failed at (0, -3, -4)!");
+  assert_is(r3_rec_sph_to(test_r3_recsphto_v, test_r3_recsphto_v), test_r3_recsphto_v, "r3_rec_sph_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r3_recsphto_v, r3(5, pi/2, arctan(3/4)), "r3_rec_sph_to() failed to change vector when output is same as source!");
+  test_r3_recsphto_v = r3(0, 3, 4);
+  test_r3_recsphto_vout = r3_zero();
+  
+  //r3_sph_rec(v_xyz)
+  assert_equalish(r3_sph_rec(r3(5, 0, arctan(3/4))), r3(3, 0, 4), "r3_sph_rec() failed at (3, 0, 4)!");
+  assert_equalish(r3_sph_rec(r3(5, pi/2, arctan(3/4))), r3(0, 3, 4), "r3_sph_rec() failed at (0, 3, 4)!");
+  assert_equalish(r3_sph_rec(r3(5, pi, arctan(3/4))), r3(-3, 0, 4), "r3_sph_rec() failed at (-3, 0, 4)!");
+  assert_equalish(r3_sph_rec(r3(5, -pi/2, pi-arctan(3/4))), r3(0, -3, -4), "r3_sph_rec() failed at (0, -3, -4)!");
+  //r3_sph_rec_to(vi_xyz, vo_rpt)
+  var test_r3_sphrecto_v = r3(5, pi/2, arctan(3/4)),
+      test_r3_sphrecto_vout = r3_zero();
+  assert_is(r3_sph_rec_to(test_r3_sphrecto_v, test_r3_sphrecto_vout), test_r3_sphrecto_vout, "r3_sph_rec_to() returned wrong vector when output is different from source!");
+  assert_equalish(r3_sph_rec_to(r3(5, 0, arctan(3/4)), test_r3_sphrecto_vout), r3(3, 0, 4), "r3_sph_rec_to() failed at (3, 0, 4)!");
+  assert_equalish(r3_sph_rec_to(r3(5, pi/2, arctan(3/4)), test_r3_sphrecto_vout), r3(0, 3, 4), "r3_sph_rec_to() failed at (0, 3, 4)!");
+  assert_equalish(r3_sph_rec_to(r3(5, pi, arctan(3/4)), test_r3_sphrecto_vout), r3(-3, 0, 4), "r3_sph_rec_to() failed at (-3, 0, 4)!");
+  assert_equalish(r3_sph_rec_to(r3(5, -pi/2, pi-arctan(3/4)), test_r3_sphrecto_vout), r3(0, -3, -4), "r3_sph_rec_to() failed at (0, -3, -4)!");
+  assert_is(r3_sph_rec_to(test_r3_sphrecto_v, test_r3_sphrecto_v), test_r3_sphrecto_v, "r3_sph_rec_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r3_sphrecto_v, r3(0, 3, 4), "r3_sph_rec_to() failed to change vector when output is same as source!");
+  test_r3_sphrecto_v = r3(5, pi/2, arctan(3/4));
+  test_r3_sphrecto_vout = r3_zero();
+  
+  //r3_cyl_sph(v_rpz)
+  assert_equalish(r3_cyl_sph(r3(3, 0, 4)), r3(5, 0, arctan(3/4)), "r3_cyl_sph() failed at (3, 0, 4)!");
+  assert_equalish(r3_cyl_sph(r3(3, pi/2, 4)), r3(5, pi/2, arctan(3/4)), "r3_cyl_sph() failed at (0, 3, 4)!");
+  assert_equalish(r3_cyl_sph(r3(3, pi, 4)), r3(5, pi, arctan(3/4)), "r3_cyl_sph() failed at (-3, 0, 4)!");
+  assert_equalish(r3_cyl_sph(r3(3, -pi/2, -4)), r3(5, -pi/2, pi-arctan(3/4)), "r3_cyl_sph() failed at (0, -3, -4)!");
+  //r3_cyl_sph_to(vi_rpz, vo_rpt)
+  var test_r3_cylsphto_v = r3(3, pi/2, 4),
+      test_r3_cylsphto_vout = r3_zero();
+  assert_is(r3_cyl_sph_to(test_r3_cylsphto_v, test_r3_cylsphto_vout), test_r3_cylsphto_vout, "r3_cyl_sph_to() returned wrong vector when output is different from source!");
+  assert_equalish(r3_cyl_sph_to(r3(3, 0, 4), test_r3_cylsphto_vout), r3(5, 0, arctan(3/4)), "r3_cyl_sph_to() failed at (3, 0, 4)!");
+  assert_equalish(r3_cyl_sph_to(r3(3, pi/2, 4), test_r3_cylsphto_vout), r3(5, pi/2, arctan(3/4)), "r3_cyl_sph_to() failed at (0, 3, 4)!");
+  assert_equalish(r3_cyl_sph_to(r3(3, pi, 4), test_r3_cylsphto_vout), r3(5, pi, arctan(3/4)), "r3_cyl_sph_to() failed at (-3, 0, 4)!");
+  assert_equalish(r3_cyl_sph_to(r3(3, -pi/2, -4), test_r3_cylsphto_vout), r3(5, -pi/2, pi-arctan(3/4)), "r3_cyl_sph_to() failed at (0, -3, -4)!");
+  assert_is(r3_cyl_sph_to(test_r3_cylsphto_v, test_r3_cylsphto_v), test_r3_cylsphto_v, "r3_cyl_sph_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r3_cylsphto_v, r3(5, pi/2, arctan(3/4)), "r3_cyl_sph_to() failed to change vector when output is same as source!");
+  test_r3_cylsphto_v = r3(3, pi/2, 4);
+  test_r3_cylsphto_vout = r3_zero();
+  
+  //r3_sph_cyl(v_rpz)
+  assert_equalish(r3_sph_cyl(r3(5, 0, arctan(3/4))), r3(3, 0, 4), "r3_sph_cyl() failed at (3, 0, 4)!");
+  assert_equalish(r3_sph_cyl(r3(5, pi/2, arctan(3/4))), r3(3, pi/2, 4), "r3_sph_cyl() failed at (0, 3, 4)!");
+  assert_equalish(r3_sph_cyl(r3(5, pi, arctan(3/4))), r3(3, pi, 4), "r3_sph_cyl() failed at (-3, 0, 4)!");
+  assert_equalish(r3_sph_cyl(r3(5, -pi/2, pi-arctan(3/4))), r3(3, -pi/2, -4), "r3_sph_cyl() failed at (0, -3, -4)!");
+  //r3_sph_cyl_to(vi_rpz, vo_rpt)
+  var test_r3_sphcylto_v = r3(5, pi/2, arctan(3/4)),
+      test_r3_sphcylto_vout = r3_zero();
+  assert_is(r3_sph_cyl_to(test_r3_sphcylto_v, test_r3_sphcylto_vout), test_r3_sphcylto_vout, "r3_sph_cyl_to() returned wrong vector when output is different from source!");
+  assert_equalish(r3_sph_cyl_to(r3(5, 0, arctan(3/4)), test_r3_sphcylto_vout), r3(3, 0, 4), "r3_sph_cyl_to() failed at (3, 0, 4)!");
+  assert_equalish(r3_sph_cyl_to(r3(5, pi/2, arctan(3/4)), test_r3_sphcylto_vout), r3(3, pi/2, 4), "r3_sph_cyl_to() failed at (0, 3, 4)!");
+  assert_equalish(r3_sph_cyl_to(r3(5, pi, arctan(3/4)), test_r3_sphcylto_vout), r3(3, pi, 4), "r3_sph_cyl_to() failed at (-3, 0, 4)!");
+  assert_equalish(r3_sph_cyl_to(r3(5, -pi/2, pi-arctan(3/4)), test_r3_sphcylto_vout), r3(3, -pi/2, -4), "r3_sph_cyl_to() failed at (0, -3, -4)!");
+  assert_is(r3_sph_cyl_to(test_r3_sphcylto_v, test_r3_sphcylto_v), test_r3_sphcylto_v, "r3_sph_cyl_to() returned wrong vector when output is same as source!");
+  assert_equalish(test_r3_sphcylto_v, r3(3, pi/2, 4), "r3_sph_cyl_to() failed to change vector when output is same as source!");
+  test_r3_sphcylto_v = r3(5, pi/2, arctan(3/4));
+  test_r3_sphcylto_vout = r3_zero();
 }

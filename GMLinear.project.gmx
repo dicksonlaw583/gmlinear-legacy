@@ -122,6 +122,18 @@
           <script>scripts\r3_encode_base64.gml</script>
           <script>scripts\r3_decode_base64.gml</script>
           <script>scripts\r3_decode_base64_to.gml</script>
+          <script>scripts\r3_rec_cyl.gml</script>
+          <script>scripts\r3_rec_cyl_to.gml</script>
+          <script>scripts\r3_cyl_rec.gml</script>
+          <script>scripts\r3_cyl_rec_to.gml</script>
+          <script>scripts\r3_rec_sph.gml</script>
+          <script>scripts\r3_rec_sph_to.gml</script>
+          <script>scripts\r3_sph_rec.gml</script>
+          <script>scripts\r3_sph_rec_to.gml</script>
+          <script>scripts\r3_cyl_sph.gml</script>
+          <script>scripts\r3_cyl_sph_to.gml</script>
+          <script>scripts\r3_sph_cyl.gml</script>
+          <script>scripts\r3_sph_cyl_to.gml</script>
         </scripts>
         <scripts name="r4">
           <script>scripts\r4_clone.gml</script>
