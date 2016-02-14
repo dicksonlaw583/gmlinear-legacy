@@ -265,4 +265,99 @@
   assert_is(rnn_subtract_to(test_rnn_subtract_to_M1, test_rnn_subtract_to_M2, test_rnn_subtract_to_M2), test_rnn_subtract_to_M2, "rnn_subtract_to() is returning the wrong matrix when Mout is M2!");
   assert_equal(test_rnn_subtract_to_M2, test_rnn_subtract_to_solution, "rnn_subtract_to() failed when Mout is M2!");
   rnn_clone_to(test_rnn_subtract_to_M2_orig, test_rnn_subtract_to_M2);
+  
+  
+  //r22_scale(M1, r)
+  var test_r22_scale_M1 = r22(1, 2, 3, 4),
+      test_r22_scale_r = 5,
+      test_r22_scale_solution = r22(5, 10, 15, 20);
+  assert_equal(r22_scale(test_r22_scale_M1, test_r22_scale_r), test_r22_scale_solution, "r22_scale() failed!");
+  //r33_scale(M1, r)
+  var test_r33_scale_M1 = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_scale_r = -10,
+      test_r33_scale_solution = r33(-10, -20, -30, -40, -50, -60, -70, -80, -90);
+  assert_equal(r33_scale(test_r33_scale_M1, test_r33_scale_r), test_r33_scale_solution, "r33_scale() failed!");
+  //r44_scale(M1, r)
+  var test_r44_scale_M1 = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_scale_r = -1,
+      test_r44_scale_solution = r44(-1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16);
+  assert_equal(r44_scale(test_r44_scale_M1, test_r44_scale_r), test_r44_scale_solution, "r44_scale() failed!");
+  //rmn_scale(M1, r)
+  var test_rmn_scale_M1 = rmn(5, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      test_rmn_scale_r = 11,
+      test_rmn_scale_solution = rmn(5, 2, 11, 22, 33, 44, 55, 66, 77, 88, 99, 110);
+  assert_equal(rmn_scale(test_rmn_scale_M1, test_rmn_scale_r), test_rmn_scale_solution, "rmn_scale() failed on 5x2!");
+  assert_equal(rmn_scale(test_r22_scale_M1, test_r22_scale_r), test_r22_scale_solution, "rmn_scale() failed on 2x2!");
+  assert_equal(rmn_scale(test_r33_scale_M1, test_r33_scale_r), test_r33_scale_solution, "rmn_scale() failed on 3x3!");
+  assert_equal(rmn_scale(test_r44_scale_M1, test_r44_scale_r), test_r44_scale_solution, "rmn_scale() failed on 4x4!");
+  //rnn_scale(M1, r)
+  assert_equal(rnn_scale(test_r22_scale_M1, test_r22_scale_r), test_r22_scale_solution, "rnn_scale() failed on 2x2!");
+  assert_equal(rnn_scale(test_r33_scale_M1, test_r33_scale_r), test_r33_scale_solution, "rnn_scale() failed on 3x3!");
+  assert_equal(rnn_scale(test_r44_scale_M1, test_r44_scale_r), test_r44_scale_solution, "rnn_scale() failed on 4x4!");
+  
+  //r22_scale_to(M1, r, Mout)
+  var test_r22_scale_to_M1_orig = r22(1, 2, 3, 4),
+      test_r22_scale_to_r_orig = 5,
+      test_r22_scale_to_solution = r22(5, 10, 15, 20),
+      test_r22_scale_to_M1 = r22_clone(test_r22_scale_to_M1_orig),
+      test_r22_scale_to_r = test_r22_scale_to_r_orig,
+      test_r22_scale_to_Mout = r22_zero();
+  assert_is(r22_scale_to(test_r22_scale_to_M1, test_r22_scale_to_r, test_r22_scale_to_Mout), test_r22_scale_to_Mout, "r22_scale_to() is returning the wrong matrix!");
+  assert_equal(test_r22_scale_to_Mout, test_r22_scale_to_solution, "r22_scale_to() failed!");
+  test_r22_scale_to_Mout = r22_zero();
+  assert_is(r22_scale_to(test_r22_scale_to_M1, test_r22_scale_to_r, test_r22_scale_to_M1), test_r22_scale_to_M1, "r22_scale_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r22_scale_to_M1, test_r22_scale_to_solution, "r22_scale_to() failed when Mout is M1!");
+  r22_clone_to(test_r22_scale_to_M1_orig, test_r22_scale_to_M1);
+  //r33_scale_to(M1, r, Mout)
+  var test_r33_scale_to_M1_orig = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_scale_to_r_orig = -10,
+      test_r33_scale_to_solution = r33(-10, -20, -30, -40, -50, -60, -70, -80, -90),
+      test_r33_scale_to_M1 = r33_clone(test_r33_scale_to_M1_orig),
+      test_r33_scale_to_r = test_r33_scale_to_r_orig,
+      test_r33_scale_to_Mout = r33_zero();
+  assert_is(r33_scale_to(test_r33_scale_to_M1, test_r33_scale_to_r, test_r33_scale_to_Mout), test_r33_scale_to_Mout, "r33_scale_to() is returning the wrong matrix!");
+  assert_equal(test_r33_scale_to_Mout, test_r33_scale_to_solution, "r33_scale_to() failed!");
+  test_r33_scale_to_Mout = r33_zero();
+  assert_is(r33_scale_to(test_r33_scale_to_M1, test_r33_scale_to_r, test_r33_scale_to_M1), test_r33_scale_to_M1, "r33_scale_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r33_scale_to_M1, test_r33_scale_to_solution, "r33_scale_to() failed when Mout is M1!");
+  r33_clone_to(test_r33_scale_to_M1_orig, test_r33_scale_to_M1);
+  //r44_scale_to(M1, r, Mout)
+  var test_r44_scale_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_scale_to_r_orig = -1,
+      test_r44_scale_to_solution = r44(-1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16),
+      test_r44_scale_to_M1 = r44_clone(test_r44_scale_to_M1_orig),
+      test_r44_scale_to_r = test_r44_scale_to_r_orig,
+      test_r44_scale_to_Mout = r44_zero();
+  assert_is(r44_scale_to(test_r44_scale_to_M1, test_r44_scale_to_r, test_r44_scale_to_Mout), test_r44_scale_to_Mout, "r44_scale_to() is returning the wrong matrix!");
+  assert_equal(test_r44_scale_to_Mout, test_r44_scale_to_solution, "r44_scale_to() failed!");
+  test_r44_scale_to_Mout = r44_zero();
+  assert_is(r44_scale_to(test_r44_scale_to_M1, test_r44_scale_to_r, test_r44_scale_to_M1), test_r44_scale_to_M1, "r44_scale_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r44_scale_to_M1, test_r44_scale_to_solution, "r44_scale_to() failed when Mout is M1!");
+  r44_clone_to(test_r44_scale_to_M1_orig, test_r44_scale_to_M1);
+  //rmn_scale_to(M1, r, Mout)
+  var test_rmn_scale_to_M1_orig = rmn(5, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      test_rmn_scale_to_r_orig = 11,
+      test_rmn_scale_to_solution = rmn(5, 2, 11, 22, 33, 44, 55, 66, 77, 88, 99, 110),
+      test_rmn_scale_to_M1 = rmn_clone(test_rmn_scale_to_M1_orig),
+      test_rmn_scale_to_r = test_rmn_scale_to_r_orig,
+      test_rmn_scale_to_Mout = rmn_zero(5, 2);
+  assert_is(rmn_scale_to(test_rmn_scale_to_M1, test_rmn_scale_to_r, test_rmn_scale_to_Mout), test_rmn_scale_to_Mout, "rmn_scale_to() is returning the wrong matrix!");
+  assert_equal(test_rmn_scale_to_Mout, test_rmn_scale_to_solution, "rmn_scale_to() failed!");
+  test_rmn_scale_to_Mout = rmn_zero(5, 2);
+  assert_is(rmn_scale_to(test_rmn_scale_to_M1, test_rmn_scale_to_r, test_rmn_scale_to_M1), test_rmn_scale_to_M1, "rmn_scale_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_rmn_scale_to_M1, test_rmn_scale_to_solution, "rmn_scale_to() failed when Mout is M1!");
+  rmn_clone_to(test_rmn_scale_to_M1_orig, test_rmn_scale_to_M1);
+  //rnn_scale_to(M1, r, Mout)
+  var test_rnn_scale_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_rnn_scale_to_r_orig = -1,
+      test_rnn_scale_to_solution = r44(-1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12, -13, -14, -15, -16),
+      test_rnn_scale_to_M1 = rnn_clone(test_rnn_scale_to_M1_orig),
+      test_rnn_scale_to_r = test_rnn_scale_to_r_orig,
+      test_rnn_scale_to_Mout = rnn_zero(4);
+  assert_is(rnn_scale_to(test_rnn_scale_to_M1, test_rnn_scale_to_r, test_rnn_scale_to_Mout), test_rnn_scale_to_Mout, "rnn_scale_to() is returning the wrong matrix!");
+  assert_equal(test_rnn_scale_to_Mout, test_rnn_scale_to_solution, "rnn_scale_to() failed!");
+  test_rnn_scale_to_Mout = rnn_zero(4);
+  assert_is(rnn_scale_to(test_rnn_scale_to_M1, test_rnn_scale_to_r, test_rnn_scale_to_M1), test_rnn_scale_to_M1, "rnn_scale_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_rnn_scale_to_M1, test_rnn_scale_to_solution, "rnn_scale_to() failed when Mout is M1!");
+  rnn_clone_to(test_rnn_scale_to_M1_orig, test_rnn_scale_to_M1);
 }
