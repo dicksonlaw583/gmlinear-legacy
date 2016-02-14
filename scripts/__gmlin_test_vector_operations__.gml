@@ -697,4 +697,76 @@
   assert_is(rn_rej_to(test_rn_rejto_v1, test_rn_rejto_v2, test_rn_rejto_v2), test_rn_rejto_v2, "rn_rej_to() returned the wrong vector when vout is v2!");
   assert_equal(test_rn_rejto_v2, rn(4, 2, 1, 1, -3), "rn_rej_to() failed when vout is v2!");
   test_rn_rejto_v2 = rn(-1, -2, -3, -4, -5);
+  
+
+  //r2_encode_string(v)
+  assert_equal(r2_encode_string(r2(7, 12)), "7.00000000000000,12.00000000000000", "r2_encode_string() failed!");
+  //r3_encode_string(v)
+  assert_equal(r3_encode_string(r3(5, 2, 3)), "5.00000000000000,2.00000000000000,3.00000000000000", "r3_encode_string() failed!");
+  //r4_encode_string(v)
+  assert_equal(r4_encode_string(r4(583, 907, 371, 815)), "583.00000000000000,907.00000000000000,371.00000000000000,815.00000000000000", "r4_encode_string() failed!");
+  //rn_encode_string(v)
+  assert_equal(rn_encode_string(rn(5, 55, 555, 5555, 55555)), "5.00000000000000,55.00000000000000,555.00000000000000,5555.00000000000000,55555.00000000000000", "rn_encode_string() failed!");
+
+  //r2_decode_string(v)
+  assert_equal(r2_decode_string("7.00000000000000,12.00000000000000"), r2(7, 12), "r2_decode_string() failed!");
+  //r3_decode_string(v)
+  assert_equal(r3_decode_string("5.00000000000000,2.00000000000000,3.00000000000000"), r3(5, 2, 3), "r3_decode_string() failed!");
+  //r4_decode_string(v)
+  assert_equal(r4_decode_string("583.00000000000000,907.00000000000000,371.00000000000000,815.00000000000000"), r4(583, 907, 371, 815), "r4_decode_string() failed!");
+  //rn_decode_string(v)
+  assert_equal(rn_decode_string("5.00000000000000,55.00000000000000,555.00000000000000,5555.00000000000000,55555.00000000000000"), rn(5, 55, 555, 5555, 55555), "rn_decode_string() failed!");
+  
+  //r2_decode_string_to(str, vout)
+  var test_r2_decodestrto_vout = r2_zero();
+  assert_is(r2_decode_string_to("7.00000000000000,12.00000000000000", test_r2_decodestrto_vout), test_r2_decodestrto_vout, "r2_decode_string_to() returned the wrong vector!");
+  assert_equal(test_r2_decodestrto_vout, r2(7, 12), "r2_decode_string() failed!");
+  //r3_decode_string_to(str, vout)
+  var test_r3_decodestrto_vout = r3_zero();
+  assert_is(r3_decode_string_to("5.00000000000000,2.00000000000000,3.00000000000000", test_r3_decodestrto_vout), test_r3_decodestrto_vout, "r3_decode_string_to() returned the wrong vector!");
+  assert_equal(test_r3_decodestrto_vout, r3(5, 2, 3), "r3_decode_string() failed!");
+  //r4_decode_string_to(str, vout)
+  var test_r4_decodestrto_vout = r4_zero();
+  assert_is(r4_decode_string_to("583.00000000000000,907.00000000000000,371.00000000000000,815.00000000000000", test_r4_decodestrto_vout), test_r4_decodestrto_vout, "r4_decode_string_to() returned the wrong vector!");
+  assert_equal(test_r4_decodestrto_vout, r4(583, 907, 371, 815), "r4_decode_string() failed!");
+  //rn_decode_string_to(str, vout)
+  var test_rn_decodestrto_vout = rn_zero(5);
+  assert_is(rn_decode_string_to("5.00000000000000,55.00000000000000,555.00000000000000,5555.00000000000000,55555.00000000000000", test_rn_decodestrto_vout), test_rn_decodestrto_vout, "rn_decode_string_to() returned the wrong vector!");
+  assert_equal(test_rn_decodestrto_vout, rn(5, 55, 555, 5555, 55555), "rn_decode_string() failed!");
+  
+  //BUG 1.4.1711: Reading and writing f64 to buffers broken on HTML5, skipping tests for HTML5
+  if (os_browser == browser_not_a_browser) {
+    //r2_encode_base64(v), r2_decode_base64(enc), r2_decode_base64_to(enc, vout)
+    var test_r2_encodeb64_v_orig = r2(-pi, exp(1)),
+        test_r2_encodeb64_v = r2_clone(test_r2_encodeb64_v_orig),
+        test_r2_encodeb64_vout = r2_zero(),
+        test_r2_encodeb64_enc = r2_encode_base64(test_r2_encodeb64_v);
+    assert_equal(r2_decode_base64(test_r2_encodeb64_enc), test_r2_encodeb64_v_orig, "r2_encode_base64()-r2_decode_base64() roundtrip mismatch!");
+    assert_is(r2_decode_base64_to(test_r2_encodeb64_enc, test_r2_encodeb64_vout), test_r2_encodeb64_vout, "r2_decode_to_base64() returning wrong vector!");
+    assert_equal(test_r2_encodeb64_vout, test_r2_encodeb64_v_orig, "r2_encode_base64()-r2_decode_base64_to() roundtrip mismatch!");
+    //r3_encode_base64(v), r3_decode_base64(enc), r3_decode_base64_to(enc, vout)
+    var test_r3_encodeb64_v_orig = r3(pi, -1/2, exp(1)),
+        test_r3_encodeb64_v = r3_clone(test_r3_encodeb64_v_orig),
+        test_r3_encodeb64_vout = r3_zero(),
+        test_r3_encodeb64_enc = r3_encode_base64(test_r3_encodeb64_v);
+    assert_equal(r3_decode_base64(test_r3_encodeb64_enc), test_r3_encodeb64_v_orig, "r3_encode_base64()-r3_decode_base64() roundtrip mismatch!");
+    assert_is(r3_decode_base64_to(test_r3_encodeb64_enc, test_r3_encodeb64_vout), test_r3_encodeb64_vout, "r3_decode_to_base64() returning wrong vector!");
+    assert_equal(test_r3_encodeb64_vout, test_r3_encodeb64_v_orig, "r3_encode_base64()-r3_decode_base64_to() roundtrip mismatch!");
+    //r4_encode_base64(v), r4_decode_base64(enc), r4_decode_base64_to(enc, vout)
+    var test_r4_encodeb64_v_orig = r4(pi, 35, 502, exp(1)),
+        test_r4_encodeb64_v = r4_clone(test_r4_encodeb64_v_orig),
+        test_r4_encodeb64_vout = r4_zero(),
+        test_r4_encodeb64_enc = r4_encode_base64(test_r4_encodeb64_v);
+    assert_equal(r4_decode_base64(test_r4_encodeb64_enc), test_r4_encodeb64_v_orig, "r4_encode_base64()-r4_decode_base64() roundtrip mismatch!");
+    assert_is(r4_decode_base64_to(test_r4_encodeb64_enc, test_r4_encodeb64_vout), test_r4_encodeb64_vout, "r4_decode_to_base64() returning wrong vector!");
+    assert_equal(test_r4_encodeb64_vout, test_r4_encodeb64_v_orig, "r4_encode_base64()-r4_decode_base64_to() roundtrip mismatch!");
+    //rn_encode_base64(v), rn_decode_base64(enc), rn_decode_base64_to(enc, vout)
+    var test_rn_encodeb64_v_orig = rn(pi, 35, 502, -29, 0),
+        test_rn_encodeb64_v = rn_clone(test_rn_encodeb64_v_orig),
+        test_rn_encodeb64_vout = rn_zero(5),
+        test_rn_encodeb64_enc = rn_encode_base64(test_rn_encodeb64_v);
+    assert_equal(rn_decode_base64(test_rn_encodeb64_enc, 5), test_rn_encodeb64_v_orig, "rn_encode_base64()-rn_decode_base64() roundtrip mismatch!");
+    assert_is(rn_decode_base64_to(test_rn_encodeb64_enc, 5, test_rn_encodeb64_vout), test_rn_encodeb64_vout, "rn_decode_to_base64() returning wrong vector!");
+    assert_equal(test_rn_encodeb64_vout, test_rn_encodeb64_v_orig, "rn_encode_base64()-rn_decode_base64_to() roundtrip mismatch!");
+  }
 }
