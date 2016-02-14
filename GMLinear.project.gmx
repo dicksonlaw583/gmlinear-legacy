@@ -200,22 +200,42 @@
         <scripts name="r22">
           <script>scripts\r22_clone.gml</script>
           <script>scripts\r22_clone_to.gml</script>
+          <script>scripts\r22_add.gml</script>
+          <script>scripts\r22_subtract.gml</script>
+          <script>scripts\r22_add_to.gml</script>
+          <script>scripts\r22_subtract_to.gml</script>
         </scripts>
         <scripts name="r33">
           <script>scripts\r33_clone.gml</script>
           <script>scripts\r33_clone_to.gml</script>
+          <script>scripts\r33_add.gml</script>
+          <script>scripts\r33_subtract.gml</script>
+          <script>scripts\r33_add_to.gml</script>
+          <script>scripts\r33_subtract_to.gml</script>
         </scripts>
         <scripts name="r44">
           <script>scripts\r44_clone.gml</script>
           <script>scripts\r44_clone_to.gml</script>
+          <script>scripts\r44_add.gml</script>
+          <script>scripts\r44_subtract.gml</script>
+          <script>scripts\r44_add_to.gml</script>
+          <script>scripts\r44_subtract_to.gml</script>
         </scripts>
         <scripts name="rmn">
           <script>scripts\rmn_clone.gml</script>
           <script>scripts\rmn_clone_to.gml</script>
+          <script>scripts\rmn_add.gml</script>
+          <script>scripts\rmn_subtract.gml</script>
+          <script>scripts\rmn_add_to.gml</script>
+          <script>scripts\rmn_subtract_to.gml</script>
         </scripts>
         <scripts name="rnn">
           <script>scripts\rnn_clone.gml</script>
           <script>scripts\rnn_clone_to.gml</script>
+          <script>scripts\rnn_add.gml</script>
+          <script>scripts\rnn_subtract.gml</script>
+          <script>scripts\rnn_add_to.gml</script>
+          <script>scripts\rnn_subtract_to.gml</script>
         </scripts>
       </scripts>
     </scripts>
