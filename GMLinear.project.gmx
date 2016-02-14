@@ -82,6 +82,10 @@
           <script>scripts\r2_rec_gmp_to.gml</script>
           <script>scripts\r2_gmp_rec.gml</script>
           <script>scripts\r2_gmp_rec_to.gml</script>
+          <script>scripts\r2_rec_pol.gml</script>
+          <script>scripts\r2_rec_pol_to.gml</script>
+          <script>scripts\r2_pol_rec.gml</script>
+          <script>scripts\r2_pol_rec_to.gml</script>
         </scripts>
         <scripts name="r3">
           <script>scripts\r3_clone.gml</script>
