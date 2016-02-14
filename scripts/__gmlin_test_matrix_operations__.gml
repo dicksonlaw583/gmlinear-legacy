@@ -360,4 +360,125 @@
   assert_is(rnn_scale_to(test_rnn_scale_to_M1, test_rnn_scale_to_r, test_rnn_scale_to_M1), test_rnn_scale_to_M1, "rnn_scale_to() is returning the wrong matrix when Mout is M1!");
   assert_equal(test_rnn_scale_to_M1, test_rnn_scale_to_solution, "rnn_scale_to() failed when Mout is M1!");
   rnn_clone_to(test_rnn_scale_to_M1_orig, test_rnn_scale_to_M1);
+  
+  
+  //r22_multiply(M1, M2)
+  var test_r22_multiply_M1 = r22(1, 2, 3, 4),
+      test_r22_multiply_M2 = r22(4, 3, 2, 1),
+      test_r22_multiply_solution = r22(8, 5, 20, 13);
+  assert_equal(r22_multiply(test_r22_multiply_M1, test_r22_multiply_M2), test_r22_multiply_solution, "r22_multiply() failed!");
+  //r33_multiply(M1, M2)
+  var test_r33_multiply_M1 = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_multiply_M2 = r33(9, 8, 7, 6, 5, 4, 3, 2, 1),
+      test_r33_multiply_solution = r33(30, 24, 18, 84, 69, 54, 138, 114, 90);
+  assert_equal(r33_multiply(test_r33_multiply_M1, test_r33_multiply_M2), test_r33_multiply_solution, "r33_multiply() failed!");
+  //r44_multiply(M1, M2)
+  var test_r44_multiply_M1 = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_multiply_M2 = r44(16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1),
+      test_r44_multiply_solution = r44(80, 70, 60, 50, 240, 214, 188, 162, 400, 358, 316, 274, 560, 502, 444, 386);
+  assert_equal(r44_multiply(test_r44_multiply_M1, test_r44_multiply_M2), test_r44_multiply_solution, "r44_multiply() failed!");
+  //rmn_multiply(M1, M2)
+  var test_rmn_multiply_M1 = rmn(4, 2, 1, 2, 3, 4, 5, 6, 7, 8),
+      test_rmn_multiply_M2 = rmn(2, 3, 6, 5, 4, 3, 2, 1),
+      test_rmn_multiply_solution = rmn(4, 3, 12, 9, 6, 30, 23, 16, 48, 37, 26, 66, 51, 36);
+  assert_equal(rmn_multiply(test_rmn_multiply_M1, test_rmn_multiply_M2), test_rmn_multiply_solution, "rmn_multiply() failed on 5x2!");
+  assert_equal(rmn_multiply(test_r22_multiply_M1, test_r22_multiply_M2), test_r22_multiply_solution, "rmn_multiply() failed on 2x2!");
+  assert_equal(rmn_multiply(test_r33_multiply_M1, test_r33_multiply_M2), test_r33_multiply_solution, "rmn_multiply() failed on 3x3!");
+  assert_equal(rmn_multiply(test_r44_multiply_M1, test_r44_multiply_M2), test_r44_multiply_solution, "rmn_multiply() failed on 4x4!");
+  //rnn_multiply(M1, M2)
+  assert_equal(rnn_multiply(test_r22_multiply_M1, test_r22_multiply_M2), test_r22_multiply_solution, "rnn_multiply() failed on 2x2!");
+  assert_equal(rnn_multiply(test_r33_multiply_M1, test_r33_multiply_M2), test_r33_multiply_solution, "rnn_multiply() failed on 3x3!");
+  assert_equal(rnn_multiply(test_r44_multiply_M1, test_r44_multiply_M2), test_r44_multiply_solution, "rnn_multiply() failed on 4x4!");
+  
+  //r22_multiply_to(M1, M2, Mout)
+  var test_r22_multiply_to_M1_orig = r22(1, 2, 3, 4),
+      test_r22_multiply_to_M2_orig = r22(4, 3, 2, 1),
+      test_r22_multiply_to_solution = r22(8, 5, 20, 13),
+      test_r22_multiply_to_M1 = r22_clone(test_r22_multiply_to_M1_orig),
+      test_r22_multiply_to_M2 = r22_clone(test_r22_multiply_to_M2_orig),
+      test_r22_multiply_to_Mout = r22_zero();
+  assert_is(r22_multiply_to(test_r22_multiply_to_M1, test_r22_multiply_to_M2, test_r22_multiply_to_Mout), test_r22_multiply_to_Mout, "r22_multiply_to() is returning the wrong matrix!");
+  assert_equal(test_r22_multiply_to_Mout, test_r22_multiply_to_solution, "r22_multiply_to() failed!");
+  test_r22_multiply_to_Mout = r22_zero();
+  assert_is(r22_multiply_to(test_r22_multiply_to_M1, test_r22_multiply_to_M2, test_r22_multiply_to_M1), test_r22_multiply_to_M1, "r22_multiply_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r22_multiply_to_M1, test_r22_multiply_to_solution, "r22_multiply_to() failed when Mout is M1!");
+  r22_clone_to(test_r22_multiply_to_M1_orig, test_r22_multiply_to_M1);
+  assert_is(r22_multiply_to(test_r22_multiply_to_M1, test_r22_multiply_to_M2, test_r22_multiply_to_M2), test_r22_multiply_to_M2, "r22_multiply_to() is returning the wrong matrix when Mout is M2!");
+  assert_equal(test_r22_multiply_to_M2, test_r22_multiply_to_solution, "r22_multiply_to() failed when Mout is M2!");
+  r22_clone_to(test_r22_multiply_to_M2_orig, test_r22_multiply_to_M2);
+  //r33_multiply_to(M1, M2, Mout)
+  var test_r33_multiply_to_M1_orig = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_multiply_to_M2_orig = r33(9, 8, 7, 6, 5, 4, 3, 2, 1),
+      test_r33_multiply_to_solution = r33(30, 24, 18, 84, 69, 54, 138, 114, 90),
+      test_r33_multiply_to_M1 = r33_clone(test_r33_multiply_to_M1_orig),
+      test_r33_multiply_to_M2 = r33_clone(test_r33_multiply_to_M2_orig),
+      test_r33_multiply_to_Mout = r33_zero();
+  assert_is(r33_multiply_to(test_r33_multiply_to_M1, test_r33_multiply_to_M2, test_r33_multiply_to_Mout), test_r33_multiply_to_Mout, "r33_multiply_to() is returning the wrong matrix!");
+  assert_equal(test_r33_multiply_to_Mout, test_r33_multiply_to_solution, "r33_multiply_to() failed!");
+  test_r33_multiply_to_Mout = r33_zero();
+  assert_is(r33_multiply_to(test_r33_multiply_to_M1, test_r33_multiply_to_M2, test_r33_multiply_to_M1), test_r33_multiply_to_M1, "r33_multiply_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r33_multiply_to_M1, test_r33_multiply_to_solution, "r33_multiply_to() failed when Mout is M1!");
+  r33_clone_to(test_r33_multiply_to_M1_orig, test_r33_multiply_to_M1);
+  assert_is(r33_multiply_to(test_r33_multiply_to_M1, test_r33_multiply_to_M2, test_r33_multiply_to_M2), test_r33_multiply_to_M2, "r33_multiply_to() is returning the wrong matrix when Mout is M2!");
+  assert_equal(test_r33_multiply_to_M2, test_r33_multiply_to_solution, "r33_multiply_to() failed when Mout is M2!");
+  r33_clone_to(test_r33_multiply_to_M2_orig, test_r33_multiply_to_M2);
+  //r44_multiply_to(M1, M2, Mout)
+  var test_r44_multiply_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_multiply_to_M2_orig = r44(16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1),
+      test_r44_multiply_to_solution = r44(80, 70, 60, 50, 240, 214, 188, 162, 400, 358, 316, 274, 560, 502, 444, 386),
+      test_r44_multiply_to_M1 = r44_clone(test_r44_multiply_to_M1_orig),
+      test_r44_multiply_to_M2 = r44_clone(test_r44_multiply_to_M2_orig),
+      test_r44_multiply_to_Mout = r44_zero();
+  assert_is(r44_multiply_to(test_r44_multiply_to_M1, test_r44_multiply_to_M2, test_r44_multiply_to_Mout), test_r44_multiply_to_Mout, "r44_multiply_to() is returning the wrong matrix!");
+  assert_equal(test_r44_multiply_to_Mout, test_r44_multiply_to_solution, "r44_multiply_to() failed!");
+  test_r44_multiply_to_Mout = r44_zero();
+  assert_is(r44_multiply_to(test_r44_multiply_to_M1, test_r44_multiply_to_M2, test_r44_multiply_to_M1), test_r44_multiply_to_M1, "r44_multiply_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_r44_multiply_to_M1, test_r44_multiply_to_solution, "r44_multiply_to() failed when Mout is M1!");
+  r44_clone_to(test_r44_multiply_to_M1_orig, test_r44_multiply_to_M1);
+  assert_is(r44_multiply_to(test_r44_multiply_to_M1, test_r44_multiply_to_M2, test_r44_multiply_to_M2), test_r44_multiply_to_M2, "r44_multiply_to() is returning the wrong matrix when Mout is M2!");
+  assert_equal(test_r44_multiply_to_M2, test_r44_multiply_to_solution, "r44_multiply_to() failed when Mout is M2!");
+  r44_clone_to(test_r44_multiply_to_M2_orig, test_r44_multiply_to_M2);
+  //rmn_multiply_to(M1, M2, Mout)
+  var test_rmn_multiply_to_M1_orig = rmn(4, 2, 1, 2, 3, 4, 5, 6, 7, 8),
+      test_rmn_multiply_to_M2_orig = rmn(2, 3, 6, 5, 4, 3, 2, 1),
+      test_rmn_multiply_to_solution = rmn(4, 3, 12, 9, 6, 30, 23, 16, 48, 37, 26, 66, 51, 36),
+      test_rmn_multiply_to_M1 = rmn_clone(test_rmn_multiply_to_M1_orig),
+      test_rmn_multiply_to_M2 = rmn_clone(test_rmn_multiply_to_M2_orig),
+      test_rmn_multiply_to_Mout = rmn_zero(4, 3);
+  assert_is(rmn_multiply_to(test_rmn_multiply_to_M1, test_rmn_multiply_to_M2, test_rmn_multiply_to_Mout), test_rmn_multiply_to_Mout, "rmn_multiply_to() is returning the wrong matrix!");
+  assert_equal(test_rmn_multiply_to_Mout, test_rmn_multiply_to_solution, "rmn_multiply_to() failed!");
+  test_rmn_multiply_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+  test_rmn_multiply_to_M2_orig = r44(16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1);
+  test_rmn_multiply_to_solution = r44(80, 70, 60, 50, 240, 214, 188, 162, 400, 358, 316, 274, 560, 502, 444, 386);
+  test_rmn_multiply_to_M1 = rmn_clone(test_rmn_multiply_to_M1_orig);
+  test_rmn_multiply_to_M2 = rmn_clone(test_rmn_multiply_to_M2_orig);
+  test_rmn_multiply_to_Mout = r44_zero();
+  assert_is(rmn_multiply_to(test_rmn_multiply_to_M1, test_rmn_multiply_to_M2, test_rmn_multiply_to_M1), test_rmn_multiply_to_M1, "rmn_multiply_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_rmn_multiply_to_M1, test_rmn_multiply_to_solution, "rmn_multiply_to() failed when Mout is M1!");
+  rmn_clone_to(test_rmn_multiply_to_M1_orig, test_rmn_multiply_to_M1);
+  assert_is(rmn_multiply_to(test_rmn_multiply_to_M1, test_rmn_multiply_to_M2, test_rmn_multiply_to_M2), test_rmn_multiply_to_M2, "rmn_multiply_to() is returning the wrong matrix when Mout is M2!");
+  assert_equal(test_rmn_multiply_to_M2, test_rmn_multiply_to_solution, "rmn_multiply_to() failed when Mout is M2!");
+  rmn_clone_to(test_rmn_multiply_to_M2_orig, test_rmn_multiply_to_M2);
+  test_rmn_multiply_to_M1_orig = rmn(4, 2, 1, 2, 3, 4, 5, 6, 7, 8);
+  test_rmn_multiply_to_M2_orig = rmn(2, 3, 6, 5, 4, 3, 2, 1);
+  test_rmn_multiply_to_solution = rmn(4, 3, 12, 9, 6, 30, 23, 16, 48, 37, 26, 66, 51, 36);
+  test_rmn_multiply_to_M1 = rmn_clone(test_rmn_multiply_to_M1_orig);
+  test_rmn_multiply_to_M2 = rmn_clone(test_rmn_multiply_to_M2_orig);
+  test_rmn_multiply_to_Mout = rmn_zero(4, 3);
+  //rnn_multiply_to(M1, M2, Mout)
+  var test_rnn_multiply_to_M1_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_rnn_multiply_to_M2_orig = r44(16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1),
+      test_rnn_multiply_to_solution = r44(80, 70, 60, 50, 240, 214, 188, 162, 400, 358, 316, 274, 560, 502, 444, 386),
+      test_rnn_multiply_to_M1 = rnn_clone(test_rnn_multiply_to_M1_orig),
+      test_rnn_multiply_to_M2 = rnn_clone(test_rnn_multiply_to_M2_orig),
+      test_rnn_multiply_to_Mout = rnn_zero(4);
+  assert_is(rnn_multiply_to(test_rnn_multiply_to_M1, test_rnn_multiply_to_M2, test_rnn_multiply_to_Mout), test_rnn_multiply_to_Mout, "rnn_multiply_to() is returning the wrong matrix!");
+  assert_equal(test_rnn_multiply_to_Mout, test_rnn_multiply_to_solution, "rnn_multiply_to() failed!");
+  test_rnn_multiply_to_Mout = rnn_zero(4);
+  assert_is(rnn_multiply_to(test_rnn_multiply_to_M1, test_rnn_multiply_to_M2, test_rnn_multiply_to_M1), test_rnn_multiply_to_M1, "rnn_multiply_to() is returning the wrong matrix when Mout is M1!");
+  assert_equal(test_rnn_multiply_to_M1, test_rnn_multiply_to_solution, "rnn_multiply_to() failed when Mout is M1!");
+  rnn_clone_to(test_rnn_multiply_to_M1_orig, test_rnn_multiply_to_M1);
+  assert_is(rnn_multiply_to(test_rnn_multiply_to_M1, test_rnn_multiply_to_M2, test_rnn_multiply_to_M2), test_rnn_multiply_to_M2, "rnn_multiply_to() is returning the wrong matrix when Mout is M2!");
+  assert_equal(test_rnn_multiply_to_M2, test_rnn_multiply_to_solution, "rnn_multiply_to() failed when Mout is M2!");
+  rnn_clone_to(test_rnn_multiply_to_M2_orig, test_rnn_multiply_to_M2);
 }
