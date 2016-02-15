@@ -566,4 +566,110 @@
   assert_is(rnn_transpose_to(test_rnn_transpose_to_M1, test_rnn_transpose_to_M1), test_rnn_transpose_to_M1, "rnn_transpose_to() is returning the wrong matrix when Mout is M1!");
   assert_equal(test_rnn_transpose_to_M1, test_rnn_transpose_to_solution, "rnn_transpose_to() failed when Mout is M1!");
   rnn_clone_to(test_rnn_transpose_to_M1_orig, test_rnn_transpose_to_M1);
+  
+  
+  //r22_transform(M, v)
+  var test_r22_transform_M = r22(1, 2, 3, 4),
+      test_r22_transform_v = r2(5, 6),
+      test_r22_transform_solution = r2(17, 39);
+  assert_equal(r22_transform(test_r22_transform_M, test_r22_transform_v), test_r22_transform_solution, "r22_transform() failed!");
+  //r33_transform(M, v)
+  var test_r33_transform_M = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_transform_v = r3(10, 11, 12),
+      test_r33_transform_solution = r3(68, 167, 266);
+  assert_equal(r33_transform(test_r33_transform_M, test_r33_transform_v), test_r33_transform_solution, "r33_transform() failed!");
+  //r44_transform(M, v)
+  var test_r44_transform_M = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_transform_v = r4(1, 2, 3, 4),
+      test_r44_transform_solution = r4(30, 70, 110, 150);
+  assert_equal(r44_transform(test_r44_transform_M, test_r44_transform_v), test_r44_transform_solution, "r44_transform() failed!");
+  //rmn_transform(M, v)
+  var test_rmn_transform_M = rmn(4, 2, 1, 2, 3, 4, 5, 6, 7, 8),
+      test_rmn_transform_v = r2(9, 10),
+      test_rmn_transform_solution = r4(29, 67, 105, 143);
+  assert_equal(rmn_transform(test_rmn_transform_M, test_rmn_transform_v), test_rmn_transform_solution, "rmn_transform() failed on 5x2!");
+  assert_equal(rmn_transform(test_r22_transform_M, test_r22_transform_v), test_r22_transform_solution, "rmn_transform() failed on 2x2!");
+  assert_equal(rmn_transform(test_r33_transform_M, test_r33_transform_v), test_r33_transform_solution, "rmn_transform() failed on 3x3!");
+  assert_equal(rmn_transform(test_r44_transform_M, test_r44_transform_v), test_r44_transform_solution, "rmn_transform() failed on 4x4!");
+  //rnn_transform(M, v)
+  assert_equal(rnn_transform(test_r22_transform_M, test_r22_transform_v), test_r22_transform_solution, "rnn_transform() failed on 2x2!");
+  assert_equal(rnn_transform(test_r33_transform_M, test_r33_transform_v), test_r33_transform_solution, "rnn_transform() failed on 3x3!");
+  assert_equal(rnn_transform(test_r44_transform_M, test_r44_transform_v), test_r44_transform_solution, "rnn_transform() failed on 4x4!");
+  
+  //r22_transform_to(M, v, vout)
+  var test_r22_transform_to_M_orig = r22(1, 2, 3, 4),
+      test_r22_transform_to_v_orig = r2(5, 6),
+      test_r22_transform_to_solution = r2(17, 39),
+      test_r22_transform_to_M = r22_clone(test_r22_transform_to_M_orig),
+      test_r22_transform_to_v = r2_clone(test_r22_transform_to_v_orig),
+      test_r22_transform_to_vout = r2_zero();
+  assert_is(r22_transform_to(test_r22_transform_to_M, test_r22_transform_to_v, test_r22_transform_to_vout), test_r22_transform_to_vout, "r22_transform_to() is returning the wrong matrix!");
+  assert_equal(test_r22_transform_to_vout, test_r22_transform_to_solution, "r22_transform_to() failed!");
+  test_r22_transform_to_vout = r22_zero();
+  assert_is(r22_transform_to(test_r22_transform_to_M, test_r22_transform_to_v, test_r22_transform_to_v), test_r22_transform_to_v, "r22_transform_to() is returning the wrong matrix when vout is v!");
+  assert_equal(test_r22_transform_to_v, test_r22_transform_to_solution, "r22_transform_to() failed when vout is v!");
+  r2_clone_to(test_r22_transform_to_v_orig, test_r22_transform_to_v);
+  //r33_transform_to(M, v, vout)
+  var test_r33_transform_to_M_orig = r33(1, 2, 3, 4, 5, 6, 7, 8, 9),
+      test_r33_transform_to_v_orig = r3(10, 11, 12),
+      test_r33_transform_to_solution = r3(68, 167, 266),
+      test_r33_transform_to_M = r33_clone(test_r33_transform_to_M_orig),
+      test_r33_transform_to_v = r3_clone(test_r33_transform_to_v_orig),
+      test_r33_transform_to_vout = r3_zero();
+  assert_is(r33_transform_to(test_r33_transform_to_M, test_r33_transform_to_v, test_r33_transform_to_vout), test_r33_transform_to_vout, "r33_transform_to() is returning the wrong matrix!");
+  assert_equal(test_r33_transform_to_vout, test_r33_transform_to_solution, "r33_transform_to() failed!");
+  test_r33_transform_to_vout = r33_zero();
+  assert_is(r33_transform_to(test_r33_transform_to_M, test_r33_transform_to_v, test_r33_transform_to_v), test_r33_transform_to_v, "r33_transform_to() is returning the wrong matrix when vout is v!");
+  assert_equal(test_r33_transform_to_v, test_r33_transform_to_solution, "r33_transform_to() failed when vout is v!");
+  r3_clone_to(test_r33_transform_to_v_orig, test_r33_transform_to_v);
+  //r44_transform_to(M, v, vout)
+  var test_r44_transform_to_M_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_r44_transform_to_v_orig = r4(1, 2, 3, 4),
+      test_r44_transform_to_solution = r4(30, 70, 110, 150),
+      test_r44_transform_to_M = r44_clone(test_r44_transform_to_M_orig),
+      test_r44_transform_to_v = r4_clone(test_r44_transform_to_v_orig),
+      test_r44_transform_to_vout = r4_zero();
+  assert_is(r44_transform_to(test_r44_transform_to_M, test_r44_transform_to_v, test_r44_transform_to_vout), test_r44_transform_to_vout, "r44_transform_to() is returning the wrong matrix!");
+  assert_equal(test_r44_transform_to_vout, test_r44_transform_to_solution, "r44_transform_to() failed!");
+  test_r44_transform_to_vout = r44_zero();
+  assert_is(r44_transform_to(test_r44_transform_to_M, test_r44_transform_to_v, test_r44_transform_to_v), test_r44_transform_to_v, "r44_transform_to() is returning the wrong matrix when vout is v!");
+  assert_equal(test_r44_transform_to_v, test_r44_transform_to_solution, "r44_transform_to() failed when vout is v!");
+  r4_clone_to(test_r44_transform_to_v_orig, test_r44_transform_to_v);
+  //rmn_transform_to(M, v, vout)
+  var test_rmn_transform_to_M_orig = rmn(4, 2, 1, 2, 3, 4, 5, 6, 7, 8),
+      test_rmn_transform_to_v_orig = r2(9, 10),
+      test_rmn_transform_to_solution = r4(29, 67, 105, 143),
+      test_rmn_transform_to_M = rmn_clone(test_rmn_transform_to_M_orig),
+      test_rmn_transform_to_v = rn_clone(test_rmn_transform_to_v_orig),
+      test_rmn_transform_to_vout = rn_zero(4);
+  assert_is(rmn_transform_to(test_rmn_transform_to_M, test_rmn_transform_to_v, test_rmn_transform_to_vout), test_rmn_transform_to_vout, "rmn_transform_to() is returning the wrong matrix!");
+  assert_equal(test_rmn_transform_to_vout, test_rmn_transform_to_solution, "rmn_transform_to() failed!");
+  test_rmn_transform_to_M_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+  test_rmn_transform_to_v_orig = r4(1, 2, 3, 4);
+  test_rmn_transform_to_solution = r4(30, 70, 110, 150);
+  test_rmn_transform_to_M = rmn_clone(test_rmn_transform_to_M_orig);
+  test_rmn_transform_to_v = rn_clone(test_rmn_transform_to_v_orig);
+  test_rmn_transform_to_vout = r4_zero();
+  assert_is(rmn_transform_to(test_rmn_transform_to_M, test_rmn_transform_to_v, test_rmn_transform_to_v), test_rmn_transform_to_v, "rmn_transform_to() is returning the wrong matrix when vout is v!");
+  assert_equal(test_rmn_transform_to_v, test_rmn_transform_to_solution, "rmn_transform_to() failed when vout is v!");
+  rn_clone_to(test_rmn_transform_to_v_orig, test_rmn_transform_to_v);
+  test_rmn_transform_to_M_orig = rmn(4, 2, 1, 2, 3, 4, 5, 6, 7, 8);
+  test_rmn_transform_to_v_orig = r2(9, 10);
+  test_rmn_transform_to_solution = r4(29, 67, 105, 143);
+  test_rmn_transform_to_M = rmn_clone(test_rmn_transform_to_M_orig);
+  test_rmn_transform_to_v = rn_clone(test_rmn_transform_to_v_orig);
+  test_rmn_transform_to_vout = rn_zero(4);
+  //rnn_transform_to(M, v, vout)
+  var test_rnn_transform_to_M_orig = r44(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+      test_rnn_transform_to_v_orig = r4(1, 2, 3, 4),
+      test_rnn_transform_to_solution = r4(30, 70, 110, 150),
+      test_rnn_transform_to_M = rnn_clone(test_rnn_transform_to_M_orig),
+      test_rnn_transform_to_v = rn_clone(test_rnn_transform_to_v_orig),
+      test_rnn_transform_to_vout = rn_zero(4);
+  assert_is(rnn_transform_to(test_rnn_transform_to_M, test_rnn_transform_to_v, test_rnn_transform_to_vout), test_rnn_transform_to_vout, "rnn_transform_to() is returning the wrong matrix!");
+  assert_equal(test_rnn_transform_to_vout, test_rnn_transform_to_solution, "rnn_transform_to() failed!");
+  test_rnn_transform_to_vout = rn_zero(4);
+  assert_is(rnn_transform_to(test_rnn_transform_to_M, test_rnn_transform_to_v, test_rnn_transform_to_v), test_rnn_transform_to_v, "rnn_transform_to() is returning the wrong matrix when vout is v!");
+  assert_equal(test_rnn_transform_to_v, test_rnn_transform_to_solution, "rnn_transform_to() failed when vout is v!");
+  rn_clone_to(test_rnn_transform_to_v_orig, test_rnn_transform_to_v);
 }
