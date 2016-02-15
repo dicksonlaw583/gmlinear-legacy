@@ -672,4 +672,67 @@
   assert_is(rnn_transform_to(test_rnn_transform_to_M, test_rnn_transform_to_v, test_rnn_transform_to_v), test_rnn_transform_to_v, "rnn_transform_to() is returning the wrong matrix when vout is v!");
   assert_equal(test_rnn_transform_to_v, test_rnn_transform_to_solution, "rnn_transform_to() failed when vout is v!");
   rn_clone_to(test_rnn_transform_to_v_orig, test_rnn_transform_to_v);
+  
+  
+  //r22_invert(M)
+  var test_r22_invert_M = r22(2, 3, 4, 7),
+      test_r22_invert_solution = r22(7/2, -3/2, -2, 1);
+  assert_equalish(r22_invert(test_r22_invert_M), test_r22_invert_solution, "r22_invert() failed!");
+  //r33_invert(M)
+  var test_r33_invert_M = r33(4, 9, 2, 3, 5, 7, 8, 1, 6),
+      test_r33_invert_solution = r33(23/360, -13/90, 53/360, 19/180, 1/45, -11/180, -37/360, 17/90, -7/360);
+  assert_equalish(r33_invert(test_r33_invert_M), test_r33_invert_solution, "r33_invert() failed!");
+  //r44_invert(M)
+  var test_r44_invert_M = r44(-3, 2, 4, -2, 1, 7, 8, -8, -5, -7, -1, 3, 6, 5, -6, -4),
+      test_r44_invert_solution = r44(-163/428, 51/428, -11/214, -37/428, 141/428, -73/428, -43/214, 11/428, -137/856, 77/856, -25/428, -123/856, 69/856, -145/856, -103/428, -113/856);
+  assert_equalish(r44_invert(test_r44_invert_M), test_r44_invert_solution, "r44_invert() failed!");
+  //rnn_invert(M)
+  assert_equalish(rnn_invert(test_r22_invert_M), test_r22_invert_solution, "rnn_invert() failed on 2x2!");
+  assert_equalish(rnn_invert(test_r33_invert_M), test_r33_invert_solution, "rnn_invert() failed on 3x3!");
+  assert_equalish(rnn_invert(test_r44_invert_M), test_r44_invert_solution, "rnn_invert() failed on 4x4!");
+  
+  //r22_invert_to(M, Mout)
+  var test_r22_invert_to_M_orig = r22(2, 3, 4, 7),
+      test_r22_invert_to_solution = r22(7/2, -3/2, -2, 1),
+      test_r22_invert_to_M = r22_clone(test_r22_invert_to_M_orig),
+      test_r22_invert_to_Mout = r22_zero();
+  assert_is(r22_invert_to(test_r22_invert_to_M, test_r22_invert_to_Mout), test_r22_invert_to_Mout, "r22_invert_to() is returning the wrong matrix!");
+  assert_equalish(test_r22_invert_to_Mout, test_r22_invert_to_solution, "r22_invert_to() failed!");
+  test_r22_invert_to_Mout = r22_zero();
+  assert_is(r22_invert_to(test_r22_invert_to_M, test_r22_invert_to_M), test_r22_invert_to_M, "r22_invert_to() is returning the wrong matrix when Mout is M!");
+  assert_equalish(test_r22_invert_to_M, test_r22_invert_to_solution, "r22_invert_to() failed when Mout is M!");
+  r22_clone_to(test_r22_invert_to_M_orig, test_r22_invert_to_M);
+  //r33_invert_to(M, Mout)
+  var test_r33_invert_to_M_orig = r33(4, 9, 2, 3, 5, 7, 8, 1, 6),
+      test_r33_invert_to_solution = r33(23/360, -13/90, 53/360, 19/180, 1/45, -11/180, -37/360, 17/90, -7/360),
+      test_r33_invert_to_M = r33_clone(test_r33_invert_to_M_orig),
+      test_r33_invert_to_Mout = r33_zero();
+  assert_is(r33_invert_to(test_r33_invert_to_M, test_r33_invert_to_Mout), test_r33_invert_to_Mout, "r33_invert_to() is returning the wrong matrix!");
+  assert_equalish(test_r33_invert_to_Mout, test_r33_invert_to_solution, "r33_invert_to() failed!");
+  test_r33_invert_to_Mout = r33_zero();
+  assert_is(r33_invert_to(test_r33_invert_to_M, test_r33_invert_to_M), test_r33_invert_to_M, "r33_invert_to() is returning the wrong matrix when Mout is M!");
+  assert_equalish(test_r33_invert_to_M, test_r33_invert_to_solution, "r33_invert_to() failed when Mout is M!");
+  r33_clone_to(test_r33_invert_to_M_orig, test_r33_invert_to_M);
+  //r44_invert_to(M, Mout)
+  var test_r44_invert_to_M_orig = r44(-3, 2, 4, -2, 1, 7, 8, -8, -5, -7, -1, 3, 6, 5, -6, -4),
+      test_r44_invert_to_solution = r44(-163/428, 51/428, -11/214, -37/428, 141/428, -73/428, -43/214, 11/428, -137/856, 77/856, -25/428, -123/856, 69/856, -145/856, -103/428, -113/856),
+      test_r44_invert_to_M = r44_clone(test_r44_invert_to_M_orig),
+      test_r44_invert_to_Mout = r44_zero();
+  assert_is(r44_invert_to(test_r44_invert_to_M, test_r44_invert_to_Mout), test_r44_invert_to_Mout, "r44_invert_to() is returning the wrong matrix!");
+  assert_equalish(test_r44_invert_to_Mout, test_r44_invert_to_solution, "r44_invert_to() failed!");
+  test_r44_invert_to_Mout = r44_zero();
+  assert_is(r44_invert_to(test_r44_invert_to_M, test_r44_invert_to_M), test_r44_invert_to_M, "r44_invert_to() is returning the wrong matrix when Mout is M!");
+  assert_equalish(test_r44_invert_to_M, test_r44_invert_to_solution, "r44_invert_to() failed when Mout is M!");
+  r44_clone_to(test_r44_invert_to_M_orig, test_r44_invert_to_M);
+  //rnn_invert_to(M, Mout)
+  var test_rnn_invert_to_M_orig = r44(-3, 2, 4, -2, 1, 7, 8, -8, -5, -7, -1, 3, 6, 5, -6, -4),
+      test_rnn_invert_to_solution = r44(-163/428, 51/428, -11/214, -37/428, 141/428, -73/428, -43/214, 11/428, -137/856, 77/856, -25/428, -123/856, 69/856, -145/856, -103/428, -113/856),
+      test_rnn_invert_to_M = rnn_clone(test_rnn_invert_to_M_orig),
+      test_rnn_invert_to_Mout = rnn_zero(4);
+  assert_is(rnn_invert_to(test_rnn_invert_to_M, test_rnn_invert_to_Mout), test_rnn_invert_to_Mout, "rnn_invert_to() is returning the wrong matrix!");
+  assert_equalish(test_rnn_invert_to_Mout, test_rnn_invert_to_solution, "rnn_invert_to() failed!");
+  test_rnn_invert_to_Mout = rnn_zero(4);
+  assert_is(rnn_invert_to(test_rnn_invert_to_M, test_rnn_invert_to_M), test_rnn_invert_to_M, "rnn_invert_to() is returning the wrong matrix when Mout is M!");
+  assert_equalish(test_rnn_invert_to_M, test_rnn_invert_to_solution, "rnn_invert_to() failed when Mout is M!");
+  rnn_clone_to(test_rnn_invert_to_M_orig, test_rnn_invert_to_M);
 }
