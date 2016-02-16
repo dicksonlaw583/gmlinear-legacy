@@ -735,4 +735,71 @@
   assert_is(rnn_invert_to(test_rnn_invert_to_M, test_rnn_invert_to_M), test_rnn_invert_to_M, "rnn_invert_to() is returning the wrong matrix when Mout is M!");
   assert_equalish(test_rnn_invert_to_M, test_rnn_invert_to_solution, "rnn_invert_to() failed when Mout is M!");
   rnn_clone_to(test_rnn_invert_to_M_orig, test_rnn_invert_to_M);
+  
+  
+  //r22_encode_string(M)
+  var test_r22_encode_M = r22(3, -5, 13, -50),
+      test_r22_encode_solution = "3.00000000000000,-5.00000000000000;13.00000000000000,-50.00000000000000";
+  assert_equal(r22_encode_string(test_r22_encode_M), test_r22_encode_solution, "r22_encode_string() failed!");
+  //r33_encode_string(M)
+  var test_r33_encode_M = r33(3, -5, 13, -50, 5, 6, 7, 8, 9),
+      test_r33_encode_solution = "3.00000000000000,-5.00000000000000,13.00000000000000;-50.00000000000000,5.00000000000000,6.00000000000000;7.00000000000000,8.00000000000000,9.00000000000000";
+  assert_equal(r33_encode_string(test_r33_encode_M), test_r33_encode_solution, "r33_encode_string() failed!");
+  //r44_encode_string(M)
+  var test_r44_encode_M = r44(3, -5, 13, -50, 5, 6, 7, 8, 9, -10, -11, -12, -13, -14, -15, -16),
+      test_r44_encode_solution = "3.00000000000000,-5.00000000000000,13.00000000000000,-50.00000000000000;5.00000000000000,6.00000000000000,7.00000000000000,8.00000000000000;9.00000000000000,-10.00000000000000,-11.00000000000000,-12.00000000000000;-13.00000000000000,-14.00000000000000,-15.00000000000000,-16.00000000000000";
+  assert_equal(r44_encode_string(test_r44_encode_M), test_r44_encode_solution, "r44_encode_string() failed!");
+  //rmn_encode_string(M)
+  var test_rmn_encode_M = rmn(2, 3, -1, 2, -3, 4, -5, 6),
+      test_rmn_encode_solution = "-1.00000000000000,2.00000000000000,-3.00000000000000;4.00000000000000,-5.00000000000000,6.00000000000000";
+  assert_equal(rmn_encode_string(test_r22_encode_M), test_r22_encode_solution, "rmn_encode_string() failed on 2x2!");
+  assert_equal(rmn_encode_string(test_r33_encode_M), test_r33_encode_solution, "rmn_encode_string() failed on 3x3!");
+  assert_equal(rmn_encode_string(test_r44_encode_M), test_r44_encode_solution, "rmn_encode_string() failed on 4x4!");
+  assert_equal(rmn_encode_string(test_rmn_encode_M), test_rmn_encode_solution, "rmn_encode_string() failed on 2x3!");
+  //rnn_encode_string(M)
+  assert_equal(rnn_encode_string(test_r22_encode_M), test_r22_encode_solution, "rnn_encode_string() failed on 2x2!");
+  assert_equal(rnn_encode_string(test_r33_encode_M), test_r33_encode_solution, "rnn_encode_string() failed on 3x3!");
+  assert_equal(rnn_encode_string(test_r44_encode_M), test_r44_encode_solution, "rnn_encode_string() failed on 4x4!");
+  //r22_decode_string(str)
+  assert_equal(r22_decode_string(test_r22_encode_solution), test_r22_encode_M, "r22_decode_string() failed!");
+  //r33_decode_string(str)
+  assert_equal(r33_decode_string(test_r33_encode_solution), test_r33_encode_M, "r33_decode_string() failed!");
+  //r44_decode_string(str)
+  assert_equal(r44_decode_string(test_r44_encode_solution), test_r44_encode_M, "r44_decode_string() failed!");
+  //rmn_decode_string(str)
+  assert_equal(rmn_decode_string(test_r22_encode_solution), test_r22_encode_M, "rmn_decode_string() failed on 2x2!");
+  assert_equal(rmn_decode_string(test_r33_encode_solution), test_r33_encode_M, "rmn_decode_string() failed on 3x3!");
+  assert_equal(rmn_decode_string(test_r44_encode_solution), test_r44_encode_M, "rmn_decode_string() failed on 4x4!");
+  assert_equal(rmn_decode_string(test_rmn_encode_solution), test_rmn_encode_M, "rmn_decode_string() failed on 2x3!");
+  //rnn_decode_string(str)
+  assert_equal(rnn_decode_string(test_r22_encode_solution), test_r22_encode_M, "rnn_decode_string() failed on 2x2!");
+  assert_equal(rnn_decode_string(test_r33_encode_solution), test_r33_encode_M, "rnn_decode_string() failed on 3x3!");
+  assert_equal(rnn_decode_string(test_r44_encode_solution), test_r44_encode_M, "rnn_decode_string() failed on 4x4!");
+  //r22_decode_string_to(str, Mout)
+  var test_r22_decode_Mout = r22_zero();
+  assert_equal(r22_decode_string_to(test_r22_encode_solution, test_r22_decode_Mout), test_r22_encode_M, "r22_decode_string_to() failed!");
+  //r33_decode_string_to(str, Mout)
+  var test_r33_decode_Mout = r33_zero();
+  assert_equal(r33_decode_string_to(test_r33_encode_solution, test_r33_decode_Mout), test_r33_encode_M, "r33_decode_string_to() failed!");
+  //r44_decode_string_to(str, Mout)
+  var test_r44_decode_Mout = r44_zero();
+  assert_equal(r44_decode_string_to(test_r44_encode_solution, test_r44_decode_Mout), test_r44_encode_M, "r44_decode_string_to() failed!");
+  //rmn_decode_string_to(str, Mout)
+  var test_rmn_decode_Mout;
+  test_rmn_decode_Mout = 0; test_rmn_decode_Mout = r22_zero();
+  assert_equal(rmn_decode_string_to(test_r22_encode_solution, test_rmn_decode_Mout), test_r22_encode_M, "rmn_decode_string_to() failed on 2x2!");
+  test_rmn_decode_Mout = 0; test_rmn_decode_Mout = r33_zero();
+  assert_equal(rmn_decode_string_to(test_r33_encode_solution, test_rmn_decode_Mout), test_r33_encode_M, "rmn_decode_string_to() failed on 3x3!");
+  test_rmn_decode_Mout = 0; test_rmn_decode_Mout = r44_zero();
+  assert_equal(rmn_decode_string_to(test_r44_encode_solution, test_rmn_decode_Mout), test_r44_encode_M, "rmn_decode_string_to() failed on 4x4!");
+  test_rmn_decode_Mout = 0; test_rmn_decode_Mout = rmn_zero(2, 3);
+  assert_equal(rmn_decode_string_to(test_rmn_encode_solution, test_rmn_decode_Mout), test_rmn_encode_M, "rmn_decode_string_to() failed on 2x3!");
+  //rnn_decode_string_to(str, Mout)
+  var test_rnn_decode_Mout;
+  test_rnn_decode_Mout = 0; test_rnn_decode_Mout = r22_zero();
+  assert_equal(rnn_decode_string_to(test_r22_encode_solution, test_rnn_decode_Mout), test_r22_encode_M, "rnn_decode_string_to() failed on 2x2!");
+  test_rnn_decode_Mout = 0; test_rnn_decode_Mout = r33_zero();
+  assert_equal(rnn_decode_string_to(test_r33_encode_solution, test_rnn_decode_Mout), test_r33_encode_M, "rnn_decode_string_to() failed on 3x3!");
+  test_rnn_decode_Mout = 0; test_rnn_decode_Mout = r44_zero();
+  assert_equal(rnn_decode_string_to(test_r44_encode_solution, test_rnn_decode_Mout), test_r44_encode_M, "rnn_decode_string_to() failed on 4x4!");
 }

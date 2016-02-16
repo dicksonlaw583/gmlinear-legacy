@@ -214,6 +214,9 @@
           <script>scripts\r22_invert_to.gml</script>
           <script>scripts\r22_multiply_to.gml</script>
           <script>scripts\r22_transform_to.gml</script>
+          <script>scripts\r22_encode_string.gml</script>
+          <script>scripts\r22_decode_string.gml</script>
+          <script>scripts\r22_decode_string_to.gml</script>
         </scripts>
         <scripts name="r33">
           <script>scripts\r33_clone.gml</script>
@@ -232,6 +235,9 @@
           <script>scripts\r33_invert_to.gml</script>
           <script>scripts\r33_multiply_to.gml</script>
           <script>scripts\r33_transform_to.gml</script>
+          <script>scripts\r33_encode_string.gml</script>
+          <script>scripts\r33_decode_string.gml</script>
+          <script>scripts\r33_decode_string_to.gml</script>
         </scripts>
         <scripts name="r44">
           <script>scripts\r44_clone.gml</script>
@@ -250,6 +256,9 @@
           <script>scripts\r44_transform_to.gml</script>
           <script>scripts\r44_transpose_to.gml</script>
           <script>scripts\r44_invert_to.gml</script>
+          <script>scripts\r44_encode_string.gml</script>
+          <script>scripts\r44_decode_string.gml</script>
+          <script>scripts\r44_decode_string_to.gml</script>
         </scripts>
         <scripts name="rmn">
           <script>scripts\rmn_clone.gml</script>
@@ -266,6 +275,9 @@
           <script>scripts\rmn_transpose_to.gml</script>
           <script>scripts\rmn_multiply_to.gml</script>
           <script>scripts\rmn_transform_to.gml</script>
+          <script>scripts\rmn_encode_string.gml</script>
+          <script>scripts\rmn_decode_string.gml</script>
+          <script>scripts\rmn_decode_string_to.gml</script>
         </scripts>
         <scripts name="rnn">
           <script>scripts\rnn_clone.gml</script>
@@ -285,6 +297,8 @@
           <script>scripts\rnn_transform_to.gml</script>
           <script>scripts\rnn_invert_to.gml</script>
           <script>scripts\rnn_encode_string.gml</script>
+          <script>scripts\rnn_decode_string.gml</script>
+          <script>scripts\rnn_decode_string_to.gml</script>
         </scripts>
       </scripts>
     </scripts>
