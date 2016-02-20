@@ -1,25 +1,25 @@
-///rmn_decode_string_to(enc, Mout)
+///rmn_decode_string_to(str, Mout)
 {
-  var enc = argument0,
-      i_dim = string_count(';', enc);
-  var cpos, spos, rowenc, j_dim;
+  var str = argument0,
+      i_dim = string_count(';', str);
+  var cpos, spos, rowstr, j_dim;
   for (var i = 0; i < i_dim; i++) {
-    spos = string_pos(';', enc);
-    rowenc = string_copy(enc, 1, spos-1);
-    enc = string_delete(enc, 1, spos);
-    j_dim = string_count(',', rowenc);
+    spos = string_pos(';', str);
+    rowstr = string_copy(str, 1, spos-1);
+    str = string_delete(str, 1, spos);
+    j_dim = string_count(',', rowstr);
     for (var j = 0; j < j_dim; j++) {
-      cpos = string_pos(',', rowenc);
-      argument1[@ i, j] = real(string_copy(rowenc, 1, cpos-1));
-      rowenc = string_delete(rowenc, 1, cpos);
+      cpos = string_pos(',', rowstr);
+      argument1[@ i, j] = real(string_copy(rowstr, 1, cpos-1));
+      rowstr = string_delete(rowstr, 1, cpos);
     }
-    argument1[@ i, j_dim] = real(rowenc);
+    argument1[@ i, j_dim] = real(rowstr);
   }
   for (var j = 0; j < j_dim; j++) {
-    cpos = string_pos(',', enc);
-    argument1[@ i_dim, j] = real(string_copy(enc, 1, cpos-1));
-    enc = string_delete(enc, 1, cpos);
+    cpos = string_pos(',', str);
+    argument1[@ i_dim, j] = real(string_copy(str, 1, cpos-1));
+    str = string_delete(str, 1, cpos);
   }
-  argument1[@ i_dim, j_dim] = real(enc);
+  argument1[@ i_dim, j_dim] = real(str);
   return argument1;
 }

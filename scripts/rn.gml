@@ -1,4 +1,4 @@
-///rn(x0, x1, [x2], [...])
+///rn(...)
 {
   var v;
   for (var i = 0; i < argument_count; i++) {
