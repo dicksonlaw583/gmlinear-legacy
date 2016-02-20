@@ -29,14 +29,17 @@
         </scripts>
         <scripts name="r22">
           <script>scripts\r22.gml</script>
+          <script>scripts\r22_identity.gml</script>
           <script>scripts\r22_zero.gml</script>
         </scripts>
         <scripts name="r33">
           <script>scripts\r33.gml</script>
+          <script>scripts\r33_identity.gml</script>
           <script>scripts\r33_zero.gml</script>
         </scripts>
         <scripts name="r44">
           <script>scripts\r44.gml</script>
+          <script>scripts\r44_identity.gml</script>
           <script>scripts\r44_zero.gml</script>
         </scripts>
         <scripts name="rmn">

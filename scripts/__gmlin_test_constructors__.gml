@@ -72,6 +72,14 @@
   test_r22[1, 1] = 84;
   assert_equal(r22(31, 62, 42, 84), test_r22, "r22() failed!");
   
+  //r22_identity()
+  var test_r22_identity;
+  test_r22_identity[0, 0] = 1;
+  test_r22_identity[0, 1] = 0;
+  test_r22_identity[1, 0] = 0;
+  test_r22_identity[1, 1] = 1;
+  assert_equal(r22_identity(), test_r22_identity, "r22_identity() failed!");
+  
   //r22_zero()
   var test_r22_zero;
   test_r22_zero[0, 0] = 0;
@@ -92,6 +100,19 @@
   test_r33[2, 1] = 58;
   test_r33[2, 2] = 87;
   assert_equal(r33(23, 46, 69, 17, 34, 51, 29, 58, 87), test_r33, "r33() failed!");
+  
+  //r33_identity()
+  var test_r33_identity;
+  test_r33_identity[0, 0] = 1;
+  test_r33_identity[0, 1] = 0;
+  test_r33_identity[0, 2] = 0;
+  test_r33_identity[1, 0] = 0;
+  test_r33_identity[1, 1] = 1;
+  test_r33_identity[1, 2] = 0;
+  test_r33_identity[2, 0] = 0;
+  test_r33_identity[2, 1] = 0;
+  test_r33_identity[2, 2] = 1;
+  assert_equal(r33_identity(), test_r33_identity, "r33_identity() failed!");
   
   //r33_zero()
   var test_r33_zero;
@@ -125,6 +146,26 @@
   test_r44[3, 2] = 177;
   test_r44[3, 3] = 236;
   assert_equal(r44(14, 28, 42, 56, 21, 42, 63, 84, 37, 74, 111, 148, 59, 118, 177, 236), test_r44, "r44() failed!");
+  
+  //r44_identity()
+  var test_r44_identity;
+  test_r44_identity[0, 0] = 1;
+  test_r44_identity[0, 1] = 0;
+  test_r44_identity[0, 2] = 0;
+  test_r44_identity[0, 3] = 0;
+  test_r44_identity[1, 0] = 0;
+  test_r44_identity[1, 1] = 1;
+  test_r44_identity[1, 2] = 0;
+  test_r44_identity[1, 3] = 0;
+  test_r44_identity[2, 0] = 0;
+  test_r44_identity[2, 1] = 0;
+  test_r44_identity[2, 2] = 1;
+  test_r44_identity[2, 3] = 0;
+  test_r44_identity[3, 0] = 0;
+  test_r44_identity[3, 1] = 0;
+  test_r44_identity[3, 2] = 0;
+  test_r44_identity[3, 3] = 1;
+  assert_equal(r44_identity(), test_r44_identity, "r44_identity() failed!");
   
   //r44_zero()
   var test_r44_zero;
@@ -213,4 +254,7 @@
   test_rnn_identity[2, 1] = 0;
   test_rnn_identity[2, 2] = 1;
   assert_equal(rnn_identity(3), test_rnn_identity, "rnn_identity() failed!");
+  assert_equal(rnn_identity(2), test_r22_identity, "rnn_identity() failed on 2x2!");
+  assert_equal(rnn_identity(3), test_r33_identity, "rnn_identity() failed on 3x3!");
+  assert_equal(rnn_identity(4), test_r44_identity, "rnn_identity() failed on 4x4!");
 }
