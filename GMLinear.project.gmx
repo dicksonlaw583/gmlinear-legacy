@@ -217,6 +217,9 @@
           <script>scripts\r22_encode_string.gml</script>
           <script>scripts\r22_decode_string.gml</script>
           <script>scripts\r22_decode_string_to.gml</script>
+          <script>scripts\r22_encode_base64.gml</script>
+          <script>scripts\r22_decode_base64_to.gml</script>
+          <script>scripts\r22_decode_base64.gml</script>
         </scripts>
         <scripts name="r33">
           <script>scripts\r33_clone.gml</script>
@@ -238,6 +241,9 @@
           <script>scripts\r33_encode_string.gml</script>
           <script>scripts\r33_decode_string.gml</script>
           <script>scripts\r33_decode_string_to.gml</script>
+          <script>scripts\r33_encode_base64.gml</script>
+          <script>scripts\r33_decode_base64.gml</script>
+          <script>scripts\r33_decode_base64_to.gml</script>
         </scripts>
         <scripts name="r44">
           <script>scripts\r44_clone.gml</script>
@@ -259,6 +265,9 @@
           <script>scripts\r44_encode_string.gml</script>
           <script>scripts\r44_decode_string.gml</script>
           <script>scripts\r44_decode_string_to.gml</script>
+          <script>scripts\r44_encode_base64.gml</script>
+          <script>scripts\r44_decode_base64.gml</script>
+          <script>scripts\r44_decode_base64_to.gml</script>
         </scripts>
         <scripts name="rmn">
           <script>scripts\rmn_clone.gml</script>
@@ -278,6 +287,9 @@
           <script>scripts\rmn_encode_string.gml</script>
           <script>scripts\rmn_decode_string.gml</script>
           <script>scripts\rmn_decode_string_to.gml</script>
+          <script>scripts\rmn_encode_base64.gml</script>
+          <script>scripts\rmn_decode_base64.gml</script>
+          <script>scripts\rmn_decode_base64_to.gml</script>
         </scripts>
         <scripts name="rnn">
           <script>scripts\rnn_clone.gml</script>
@@ -299,6 +311,9 @@
           <script>scripts\rnn_encode_string.gml</script>
           <script>scripts\rnn_decode_string.gml</script>
           <script>scripts\rnn_decode_string_to.gml</script>
+          <script>scripts\rnn_encode_base64.gml</script>
+          <script>scripts\rnn_decode_base64.gml</script>
+          <script>scripts\rnn_decode_base64_to.gml</script>
         </scripts>
       </scripts>
     </scripts>

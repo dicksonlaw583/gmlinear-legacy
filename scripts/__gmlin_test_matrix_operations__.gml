@@ -802,4 +802,49 @@
   assert_equal(rnn_decode_string_to(test_r33_encode_solution, test_rnn_decode_Mout), test_r33_encode_M, "rnn_decode_string_to() failed on 3x3!");
   test_rnn_decode_Mout = 0; test_rnn_decode_Mout = r44_zero();
   assert_equal(rnn_decode_string_to(test_r44_encode_solution, test_rnn_decode_Mout), test_r44_encode_M, "rnn_decode_string_to() failed on 4x4!");
+
+
+  //BUG 1.4.1711: Reading and writing f64 to buffers broken on HTML5
+  if (os_browser == browser_not_a_browser) {
+    //r22_encode_base64(M)
+    var test_r22_encode_base64_M_orig = r22(pi, exp(1), -pi, exp(-1)),
+        test_r22_encode_base64_M = r22_clone(test_r22_encode_base64_M_orig),
+        test_r22_encode_base64_Mout = r22_zero(),
+        test_r22_encode_base64_enc = r22_encode_base64(test_r22_encode_base64_M);
+    assert_equal(r22_decode_base64(test_r22_encode_base64_enc), test_r22_encode_base64_M_orig, "r22_encode_base64()-r22_decode_base64() roundtrip mismatch!");
+    assert_is(r22_decode_base64_to(test_r22_encode_base64_enc, test_r22_encode_base64_Mout), test_r22_encode_base64_Mout, "r22_decode_to_base64() returning wrong matrix!");
+    assert_equal(test_r22_encode_base64_Mout, test_r22_encode_base64_M_orig, "r22_encode_base64()-r22_decode_base64_to() roundtrip mismatch!");
+    //r33_encode_base64(M)
+    var test_r33_encode_base64_M_orig = r33(pi, exp(1), sqrt(3), -pi, exp(-1), -sqrt(5), 2*pi, 0, sqrt(7)),
+        test_r33_encode_base64_M = r33_clone(test_r33_encode_base64_M_orig),
+        test_r33_encode_base64_Mout = r33_zero(),
+        test_r33_encode_base64_enc = r33_encode_base64(test_r33_encode_base64_M);
+    assert_equal(r33_decode_base64(test_r33_encode_base64_enc), test_r33_encode_base64_M_orig, "r33_encode_base64()-r33_decode_base64() roundtrip mismatch!");
+    assert_is(r33_decode_base64_to(test_r33_encode_base64_enc, test_r33_encode_base64_Mout), test_r33_encode_base64_Mout, "r33_decode_to_base64() returning wrong matrix!");
+    assert_equal(test_r33_encode_base64_Mout, test_r33_encode_base64_M_orig, "r33_encode_base64()-r33_decode_base64_to() roundtrip mismatch!");
+    //r44_encode_base64(M)
+    var test_r44_encode_base64_M_orig = r44(pi, exp(1), sqrt(3), 1, -pi, exp(-1), -sqrt(5), 5, 2*pi, 0, sqrt(7), -7, -4*pi, exp(pi), sqrt(8), -8),
+        test_r44_encode_base64_M = r44_clone(test_r44_encode_base64_M_orig),
+        test_r44_encode_base64_Mout = r44_zero(),
+        test_r44_encode_base64_enc = r44_encode_base64(test_r44_encode_base64_M);
+    assert_equal(r44_decode_base64(test_r44_encode_base64_enc), test_r44_encode_base64_M_orig, "r44_encode_base64()-r44_decode_base64() roundtrip mismatch!");
+    assert_is(r44_decode_base64_to(test_r44_encode_base64_enc, test_r44_encode_base64_Mout), test_r44_encode_base64_Mout, "r44_decode_to_base64() returning wrong matrix!");
+    assert_equal(test_r44_encode_base64_Mout, test_r44_encode_base64_M_orig, "r44_encode_base64()-r44_decode_base64_to() roundtrip mismatch!");
+    //rmn_encode_base64(M)
+    var test_rmn_encode_base64_M_orig = rmn(2, 3, pi, exp(1), -583.385, -pi, exp(-1), 907.907),
+        test_rmn_encode_base64_M = rmn_clone(test_rmn_encode_base64_M_orig),
+        test_rmn_encode_base64_Mout = rmn_zero(2, 3),
+        test_rmn_encode_base64_enc = rmn_encode_base64(test_rmn_encode_base64_M);
+    assert_equal(rmn_decode_base64(test_rmn_encode_base64_enc, 2, 3), test_rmn_encode_base64_M_orig, "rmn_encode_base64()-rmn_decode_base64() roundtrip mismatch!");
+    assert_is(rmn_decode_base64_to(test_rmn_encode_base64_enc, 2, 3, test_rmn_encode_base64_Mout), test_rmn_encode_base64_Mout, "rmn_decode_to_base64() returning wrong matrix!");
+    assert_equal(test_rmn_encode_base64_Mout, test_rmn_encode_base64_M_orig, "rmn_encode_base64()-rmn_decode_base64_to() roundtrip mismatch!");
+    //rnn_encode_base64(M)
+    var test_rnn_encode_base64_M_orig = r44(pi, exp(1), sqrt(3), 583.583, -pi, exp(-1), -sqrt(5), 907.907, 2*pi, 0, sqrt(7), -371.373, -4*pi, exp(pi), sqrt(8), -8888.9999),
+        test_rnn_encode_base64_M = rnn_clone(test_rnn_encode_base64_M_orig),
+        test_rnn_encode_base64_Mout = rnn_zero(4),
+        test_rnn_encode_base64_enc = rnn_encode_base64(test_rnn_encode_base64_M);
+    assert_equal(rnn_decode_base64(test_rnn_encode_base64_enc, 4), test_rnn_encode_base64_M_orig, "rnn_encode_base64()-rnn_decode_base64() roundtrip mismatch!");
+    assert_is(rnn_decode_base64_to(test_rnn_encode_base64_enc, 4, test_rnn_encode_base64_Mout), test_rnn_encode_base64_Mout, "rnn_decode_to_base64() returning wrong matrix!");
+    assert_equal(test_rnn_encode_base64_Mout, test_rnn_encode_base64_M_orig, "rnn_encode_base64()-rnn_decode_base64_to() roundtrip mismatch!");
+  }
 }
