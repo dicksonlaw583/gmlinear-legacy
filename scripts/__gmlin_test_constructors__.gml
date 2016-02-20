@@ -180,6 +180,14 @@
   test_rmn_zero[2, 3] = 0;
   assert_equal(rmn_zero(3, 4), test_rmn_zero, "rmn_zero() failed!");
   
+  //rnn(...)
+  var test_rnn_11;
+  test_rnn_11[0, 0] = 42;
+  assert_equal(rnn(42), test_rnn_11, "rnn() failed at 1x1!");
+  assert_equal(rnn(31, 62, 42, 84), test_r22, "rnn() failed at 2x2!");
+  assert_equal(rnn(23, 46, 69, 17, 34, 51, 29, 58, 87), test_r33, "rnn() failed at 3x3!");
+  assert_equal(rnn(14, 28, 42, 56, 21, 42, 63, 84, 37, 74, 111, 148, 59, 118, 177, 236), test_r44, "rnn() failed 4x4!");
+  
   //rnn_zero(n)
   var test_rnn_zero;
   test_rnn_zero[0, 0] = 0;

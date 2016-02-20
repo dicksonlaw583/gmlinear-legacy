@@ -44,6 +44,7 @@
           <script>scripts\rmn_zero.gml</script>
         </scripts>
         <scripts name="rnn">
+          <script>scripts\rnn.gml</script>
           <script>scripts\rnn_identity.gml</script>
           <script>scripts\rnn_zero.gml</script>
         </scripts>
