@@ -372,6 +372,17 @@
   <rooms name="rooms">
     <room>rooms\rm_test</room>
   </rooms>
+  <constants number="9">
+    <constant name="COMP_X">0</constant>
+    <constant name="COMP_Y">1</constant>
+    <constant name="COMP_Z">2</constant>
+    <constant name="COMP_T">2</constant>
+    <constant name="COMP_W">3</constant>
+    <constant name="COMP_RED">0</constant>
+    <constant name="COMP_GREEN">1</constant>
+    <constant name="COMP_BLUE">2</constant>
+    <constant name="COMP_ALPHA">3</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
