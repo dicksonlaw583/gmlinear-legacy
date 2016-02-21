@@ -11,5 +11,6 @@ GMLinear is an implementation of matrix and vector operations in pure GML. You c
 This is the official workbench for the library. Please make and test your changes here first.
 + Clone both `gmlinear` and `gmlinear-workbench`.
 + Open the workbench in GameMaker Studio and make your additions/changes to the `GMLinear` script group. Also add corresponding tests to the `GMLinear_test` script group.
-+ Export the `GMLinear` script group to `gmlinear-workbench`, overwriting its copy of `gmlinear.gml`.
++ Use F5 to run the test suite. A successful run should exit on its own without showing any errors (native platforms) or show a green background (HTML5-based platforms).
++ Export the `GMLinear` script group to `gmlinear-workbench`, overwriting its copy of `gmlinear_core.gml`.
 + Open a pull request on both `gmlinear` and `gmlinear-workbench`.
