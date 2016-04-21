@@ -5,10 +5,16 @@
   for (var i = 0; i < v_dim; i++) {
     factor += argument0[i]*argument0[i];
   }
-  factor = 1/sqrt(factor);
   var result;
-  for (var i = 0; i < v_dim; i++) {
-    result[i] = factor*argument0[i];
+  if (factor == 0) {
+    for (var i = 0; i < v_dim; i++) {
+      result[i] = 0;
+    }
+  } else {
+    factor = 1/sqrt(factor);
+    for (var i = 0; i < v_dim; i++) {
+      result[i] = factor*argument0[i];
+    }
   }
   return result;
 }
