@@ -677,7 +677,7 @@
 {
   var result;
   result[0] = argument0[0];
-  result[1] = degtorad(-argument0[1]);
+  result[1] = -argument0[1]*pi/180;
   return result;
 }
 
@@ -685,7 +685,7 @@
 ///r2_gmp_pol_to(vi_ld, vo_rt)
 {
   argument1[@ 0] = argument0[0];
-  argument1[@ 1] = degtorad(-argument0[1]);
+  argument1[@ 1] = -argument0[1]*pi/180;
   return argument1;
 }
 
@@ -694,7 +694,7 @@
 {
   var result;
   result[0] = argument0[0];
-  result[1] = radtodeg(-argument0[1]);
+  result[1] = -argument0[1]*180/pi;
   return result;
 }
 
@@ -702,7 +702,7 @@
 ///r2_pol_gmp_to(vi_rt, vo_ld)
 {
   argument1[@ 0] = argument0[0];
-  argument1[@ 1] = radtodeg(-argument0[1]);
+  argument1[@ 1] = -argument0[1]*180/pi;
   return argument1;
 }
 
